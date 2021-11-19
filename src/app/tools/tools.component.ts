@@ -55,7 +55,6 @@ export class ToolsComponent implements OnInit {
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { isNumber } from 'util';
 
 // tslint:disable-next-line: use-pipe-transform-interface
 @Pipe({ name: 'safeHtml' })
