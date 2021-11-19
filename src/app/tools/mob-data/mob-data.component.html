@@ -1,0 +1,32 @@
+<div class="container">
+<h3>Mob Search</h3>
+<div class="input-group mb-2 mt-3">
+  <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-label="Search input">
+  <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchClick()">Search</button>
+  </div>
+  
+</div>
+<div *ngIf="alertMessage" class="alert d-flex align-items-center" [class.alert-danger]="error" [class.alert-info]="!error" role="alert">
+  <i class="bi bi-exclamation-diamond me-2"></i>
+  <div>
+    {{alertMessage}}
+  </div>
+</div>
+<div *ngIf="data">
+  <div class="list-group">
+    <div *ngFor="let item of data" class="cursor-pointer" (click)="itemClick(item)" [routerLink]="['/tools/mob', item.GroupId, item.ZoneId, item.PoolId]">
+        <div class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">{{item.Name | removeUnderscore}}</div>
+            Zone: {{item.ZoneName | removeUnderscore}}
+          </div>
+          <div class="d-flex flex-column justify-content-end">
+        <div *ngIf="item.Fish != 0" class="badge bg-info rounded-pill mb-2"><span>Can Fish</span></div>
+        <div><span class="small">Max Level: {{item.MaxLevel}}</span></div>
+      </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,20 @@
+@import '../../../assets/theme/theme.scss';
+@import '../../../assets/theme/functions.scss';
+
+
+  .list-group-item, .accordion-item {
+    background-color: var(--cardBackground)!important;;
+    color: var(--cardColor)!important; 
+    border: 1px solid var(--border-color) !important; 
+  }
+
+  .top-img {
+    width: calc(100vw - 260px)
+  }
+
+  @media (max-width: 668px) {
+    .top-img {
+        width: calc(100vw - 40px)
+      }
+  }
+

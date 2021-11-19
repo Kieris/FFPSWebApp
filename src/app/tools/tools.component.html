@@ -1,0 +1,281 @@
+
+
+
+<div class="d-flex card-bg">
+    <div class="menu-all menu d-flex flex-column flex-shrink-0 p-3 pt-2 text-white shadow">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <div class="w-100 text-center">
+            <img src="../../assets/imgs/logo2.png" class="w-100">
+            <!--<div class="logo d-flex justify-content-between"><span>FINAL</span><span> FANTASY</span><span> XI</span></div>-->
+            <div class="logo d-flex justify-content-between px-2">
+              <span>F</span>
+              <span>I</span>
+              <span>N</span>
+              <span>A</span>
+              <span>L</span>
+              <span>  </span>
+              <span> </span>
+              <span> </span>
+              <span>F</span>
+              <span>A</span>
+              <span>N</span>
+              <span>T</span>
+              <span>A</span>
+              <span>S</span>
+              <span>Y</span>
+              <span> </span>
+              <span> </span>
+              <span> </span>
+              <span>X</span>
+              <span>I</span>
+            </div>
+          </div>
+        </a>
+        <hr class="p-0 m-0 mb-2 mt-2">
+        <!--<div class="list-group overflow-auto side-explorer" role="tablist">
+          <a *ngFor="let zone of zones" class="list-group-item-dark list-group-item" role="tab">
+               {{zone.Name | removeUnderscore}}
+          </a>
+        </div>-->
+        
+        <ul class="nav nav-pills flex-column mb-auto nav-list"> 
+          <li class="nav-item">
+            <a [routerLink]="['ah']" class="nav-link text-white" aria-current="page" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/1455.png" width="32" height="32">
+              Auction House
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['jobs']" class="nav-link text-white" aria-current="page" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/10429.png" width="32" height="32">
+              Jobs
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['char']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/15194.png" width="32" height="32">
+              Players
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['ls']" class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/512.png" width="32" height="32">
+              Linkshells
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['mob']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/26705.png" width="32" height="32">
+              Mob Data
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['items']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/6287.png" width="32" height="32">
+              Items
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['fishing']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/4306.png" width="32" height="32">
+              Fishing
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['crafting']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Crafting
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['zones']"class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/530.png" width="32" height="32">
+              Zones
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['sc']"class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/jobs/6.png" width="32" height="32">
+              Skillchains
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['bcnm']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/windurst2.png" width="32" height="32">
+              BCNM
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['missions']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/sandoria2.png" width="32" height="32">
+              Missions
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['quests']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/bastok2.png" width="32" height="32">
+              Quests
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['special']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Special
+            </a>
+          </li>
+        </ul>
+        <div class="card-bg"></div>
+        <hr>
+        <div class="d-flex justify-content-center">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" (click)="themeClick()" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Toggle Theme</label>
+        </div>
+      </div>
+        <!--<div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>-->
+    
+      </div>
+      <div class="router-comp p-3 flex-grow-1 vh-100 overflow-auto">
+          <router-outlet></router-outlet>
+    </div>
+    </div>
+    <div class="collapse vw-100" id="navbarToggleExternalContent">
+      <div class="menu-all fixed-top d-flex flex-column flex-shrink-0 p-3 text-white shadow">
+
+        <hr class="mt-5">    
+        <ul class="nav nav-pills flex-column mb-auto nav-list"> 
+          <li class="nav-item">
+            <a [routerLink]="['ah']" class="nav-link text-white" aria-current="page" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/1455.png" width="32" height="32">
+              Auction House
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['jobs']" class="nav-link text-white" aria-current="page" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/10429.png" width="32" height="32">
+              Jobs
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['char']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/15194.png" width="32" height="32">
+              Players
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['ls']" class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/512.png" width="32" height="32">
+              Linkshells
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['mob']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/26705.png" width="32" height="32">
+              Mob Data
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['items']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/6287.png" width="32" height="32">
+              Items
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['fishing']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/4306.png" width="32" height="32">
+              Fishing
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['crafting']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Crafting
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['zones']"class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/530.png" width="32" height="32">
+              Zones
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['sc']"class="nav-link text-white" routerLinkActive='active'>
+                <!--<i class="bi-map me-2" width="16" height="16"></i>-->
+                <img class="me-3" src="../../assets/imgs/jobs/6.png" width="32" height="32">
+              Skillchains
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['bcnm']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              BCNM
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['missions']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Missions
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['quests']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Quests
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['special']" class="nav-link text-white" routerLinkActive='active'>
+              <img class="me-3" src="../../assets/imgs/14400.png" width="32" height="32">
+              Special
+            </a>
+          </li>
+        </ul>
+        <div class="card-bg"></div>
+        <hr>
+        <div class="d-flex justify-content-center">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" (click)="themeClick()" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Theme</label>
+        </div>
+      </div>
+        <!--<div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>-->
+    
+      </div>
+    </div>
+
+    <nav class="navbar navbar-dark nav-top fixed-top">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>

@@ -1,0 +1,309 @@
+<div class="container">
+<div *ngIf="traits && traits[0]" class="d-flex">
+  <img class="me-2" [src]='"../../../assets/imgs/jobs/"+traits[0].Job+".png"' width="32" height="32"><h3>{{traits[0].Job | jobs}}</h3>
+</div>
+<div class="accordion mt-3">
+    <div *ngIf="traits" class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Traits
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let trait of traits">
+                    <div *ngIf="trait.ContentTag !== 'ABYSSEA' && trait.ContentTag !== 'ROV' && trait.Level < 76" class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{trait.Name | titlecase}} {{trait.Rank | roman}}</div>
+                        Level: {{trait.Level}}
+                        <div>{{trait.Mod?.Str}}</div>
+                      </div>
+                      <span *ngIf="trait.MeritID !== 0" class="badge bg-info rounded-pill">MERIT OBTAINED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div *ngIf="abilities" class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Abilities
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionJob">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let ab of abilities">
+                    <div *ngIf="ab.ContentTag !== 'ABYSSEA' && ab.ContentTag !== 'ROV' && ab.Level < 76 && ab.ValidTarget != 257" class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <a [routerLink]="['/tools/jobs/abilities', ab.Name]" class="fw-bold">{{ab.Name | removeUnderscore}}</a>
+            
+                        <div>Level: {{ab.Level}}</div>
+                      </div>
+                      <span *ngIf="ab.MeritModID !== 0 && ab.Level == 75" class="badge bg-info rounded-pill">MERIT OBTAINED</span>
+                      <span *ngIf="ab.MeritModID !== 0 && ab.Level < 75" class="badge bg-info rounded-pill">MERIT IMPROVED</span>
+            
+                    </div>
+                    <div class="row ms-2">
+                        <div class="col">
+                            <div class="small fs-lighter"><span class="text-muted">Range: {{ab.Range}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">AOE: <span *ngIf="ab.IsAOE == 0">No</span><span *ngIf="ab.IsAOE != 0">Yes</span></span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Cast Time: {{ab.CastTime /10}} seconds</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Recast Time: {{ab.RecastTime}} seconds</span></div>
+                        </div>
+                        <div class="col">
+                            <div class="small fs-lighter"><span class="text-muted">Target: {{ab.ValidTarget | target}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">CE: {{ab.CE}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">VE: {{ab.VE}}</span></div>
+                           <div class="small fs-lighter"><span class="text-muted">Use: {{ab.AddType | addtype}}</span></div>
+                          <!-- This form of Enmity is decreased by being the target (direct or indirect) of enemy offensive actions.
+                          This form of Enmity decreases over time at a rate of -60VE/second until reaching zero.
+                          -->
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+      </div>
+      <div *ngIf="skillRanks" class="accordion-item">
+        <h2 class="accordion-header" id="heading3">
+                <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    Skill Ranks
+                  </button>        
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="fw-light fs-5 mb-3">Level {{searchVal}} Skill Caps</div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="basic-title">Change Level</span>
+              <input class="form-range form-control form-control-sm" type="range" min="1" max="75" aria-label=".form-control-sm" 
+              [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-describedby="basic-title">
+              <button class="btn btn-sm bg-info" (click)="searchClick()">Update</button>
+              </div>
+             
+            <div class="list-group">
+                <div *ngFor="let skill of skillRanks">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a *ngIf="skill.SkillId < 27" [routerLink]="['/tools/ws', skill.SkillId]">
+                                <span *ngIf="skill.Name == 'hand2hand'">Hand-to-Hand</span>
+                                <span *ngIf="skill.Name != 'hand2hand'">{{skill.Name | titlecase}}</span>
+                            </a>
+                            <div *ngIf="skill.SkillId > 26">
+                                <span>{{skill.Name | titlecase}}</span>
+                            </div>
+                       </div>
+                       <small class="fs-lighter">Rank: {{skill.Value}}</small>
+                      </div>
+                      <span class="text-muted fs-lighter"><span class="fs-4"> {{skill.lVal}}</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div *ngIf="spells" class="accordion-item">
+        <h2 class="accordion-header" id="heading4">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            Spells
+          </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let spell of spells" class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="ms-2 w-100">
+                        <div class="fw-bold d-flex justify-content-between align-items-center">
+                          <a *ngIf="spell.Skill != 43" [routerLink]="['/tools/jobs/spells', spell.Name]">{{spell.Name | spell}}</a>
+                          <a *ngIf="spell.Skill == 43" [routerLink]="['/tools/jobs', 'spells/bluemagic', spell.Name]">{{spell.Name | spell}}</a>
+                          <div><img [src]='"../../../../assets/imgs/"+getElem(spell.Element)+".png"' width="16" height="16"></div></div> 
+                        
+                        Level: {{spell.Level}}
+                      </div>
+                     <!--<span *ngIf="trait.MeritID !== 0" class="badge bg-info rounded-pill">MERIT OBTAINED</span>-->
+                    </div>
+                    <div class="row ms-2">
+                        <div class="col">
+                          <div class="small fs-lighter"><span class="text-muted">MP Cost: {{spell.Cost}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Range: {{spell.Range/10}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">AOE: <span *ngIf="spell.AOE == 0">No</span><span *ngIf="spell.AOE != 0">Yes</span></span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Cast Time: {{spell.CastTime /1000}} seconds</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Recast Time: {{spell.RecastTime/1000}} seconds</span></div>
+                            <div *ngIf="spell.Multiplier != 1" class="small fs-lighter"><span class="text-muted">Multiplier: {{spell.Multiplier}}</span></div>
+
+                        </div>
+                        <div class="col">
+                            <div class="small fs-lighter"><span class="text-muted">Target: {{spell.ValidTarget | target}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">CE: {{spell.CE}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">VE: {{spell.VE}}</span></div>
+                            <div class="small fs-lighter"><span class="text-muted">Skill: {{spell.Skill | skillType}}</span></div>
+                            <div *ngIf="spell.Base != 0" class="small fs-lighter"><span class="text-muted">Base: {{spell.Base}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div *ngIf="merits" class="accordion-item">
+        <h2 class="accordion-header" id="heading5">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            Merits
+          </button>
+        </h2>
+        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let merit of merits">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{merit.Name | spell}}</div>                        
+                        Value: {{merit.Value}}
+                      </div>
+                      <span class="text-muted">Max Upgrade: {{merit.Upgrade}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div *ngIf="af" class="accordion-item">
+        <h2 class="accordion-header" id="heading6">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+            Artifact Armor
+          </button>
+        </h2>
+        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="d-flex flex-wrap justify-content-center">
+                <a *ngFor="let item of af" class="p-2" [routerLink]="['/tools/items', item.ItemID]" style="text-decoration: none;">
+                  <app-item-box [item]="item"></app-item-box>
+                </a>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div *ngIf="pets" class="accordion-item">
+        <h2 class="accordion-header" id="heading7">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            Pets
+          </button>
+        </h2>
+        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let pet of pets">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{pet.Name}}</div>
+
+                        <div class="text-muted small">Min Level: {{pet.MinLvl}}</div>
+                        <div class="text-muted small">Max Level: {{pet.MaxLvl}}</div>
+                        <div *ngIf="pet.JugName" class="text-muted small">Call Jug: <a [routerLink]="['/tools/items', pet.JugItemId]">{{pet.JugName | spell}}</a></div>
+
+                      </div>
+                      <span *ngIf="pet.Time !== 0">{{pet.Time/60}} min</span>
+                      <div *ngIf="pet.Elem !== 0"><img [src]='"../../../../assets/imgs/"+getElem(pet.Elem)+".png"' width="16" height="16"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div *ngIf="automatonFrames" class="accordion-item">
+        <h2 class="accordion-header" id="heading8">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+            Automaton Heads and Frames
+          </button>
+        </h2>
+        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Small button
+              </button>
+              <ul class="dropdown-menu">
+                ...
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm" type="button">
+                Small split button
+              </button>
+              <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                ...
+              </ul>
+            </div>
+            <div class="d-flex justify-content-start">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Head
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
+                  <div *ngFor="let frame of automatonFrames">
+                    <li *ngIf="frame.Slot == 0"><a class="dropdown-item" href="#">{{frame.Name}}</a></li>
+                  </div>
+                 
+                </ul>
+              </div>
+            </div>
+            <div class="list-group">
+                <div *ngFor="let frame of automatonFrames">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="d-flex justify-content-left flex-grow-1">
+                        <div class="d-flex align-items-top justify-content-center pb-3 pe-2" style="width: 54px; padding-top: 8px; padding-left: 6px;">
+                            <img [src]='"https://www.ffxiah.com/images/icon/"+frame?.ItemId+".png"'>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1 p-1">
+                           <a [routerLink]="['/tools/items', frame.ItemId]">{{frame?.Name | spell}}</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div *ngIf="automatonSpells" class="accordion-item">
+        <h2 class="accordion-header" id="heading9">
+          <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+            Automaton Spells
+          </button>
+        </h2>
+        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionJobs">
+          <div class="accordion-body">
+            <div class="list-group">
+                <div *ngFor="let spell of automatonSpells">
+                    <div class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{spell.Name | spell}}</div>
+
+                        <div class="text-muted small">Skill Level: {{spell.SkillLvl}}</div>
+                        <div class="text-muted small">Heads: {{spell.HeadStr}}</div>
+                        <div *ngIf="spell.RemStr" class="small text-muted">Removes {{spell.RemStr}}</div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+</div>
+
+</div>
+

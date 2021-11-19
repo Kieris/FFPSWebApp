@@ -1,0 +1,30 @@
+@import '../../../assets/theme/theme.scss';
+@import '../../../assets/theme/functions.scss';
+.eq-col {
+    position: relative; 
+    height: 32px;
+    width: 32px;
+    background-image: url("../../../assets/imgs/equip_box.gif");
+}
+
+  .jobs-box {
+    font-size: 0.9rem !important;
+    z-index: 1;
+    background-color: rgba(49, 59, 114, 0.9);
+    background: repeating-linear-gradient(0deg, #313b72, #313b72 1px, rgba(49, 59, 114, 0.8) 0px, rgba(49, 59, 114, 0.8) 2px);
+    list-style: none;
+    color: white !important;
+    line-height: 1.1;
+    border: 6px solid var(--border-color);
+    border-image: url("../../../assets/imgs/border.png") 6;
+    border-image-outset: 0;
+    border-image-repeat:stretch
+}
+
+tr, td {
+    font-style: italic !important;
+}
+
+table {
+    width: 100%;
+  }

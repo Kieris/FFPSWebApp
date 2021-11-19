@@ -1,0 +1,127 @@
+
+<div class="container my-3">
+<h3>Skillchains: {{ id | sc }}</h3>
+<div class="mx-2">
+    <div class="accordion mt-3">
+        <div *ngIf="skills?.Lvl1Open || skills?.Lvl1Close" class="accordion-item my-3">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Level 1
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionSkills">
+              <div class="accordion-body">
+                <div class="list-group">
+<div>
+                    <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Open</span></h5>
+                    <div *ngFor="let sc of skills?.Lvl1Open">
+                        <div class="list-group-item d-flex justify-content-center align-items-center">                            
+                            <div>{{id | sc}}<i class="mx-2 bi bi-arrow-right"></i>
+                                <a [routerLink]="['/tools/sc', sc.WSC]">{{sc.WSC | sc}}</a> 
+                                <i class="mx-2 bi bi-caret-right"></i>
+                                <a [routerLink]="['/tools/sc', sc.Create]">{{ sc.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Close</span></h5>
+                    <div *ngFor="let sc of skills?.Lvl1Close">
+                        <div class="list-group-item d-flex justify-content-center align-items-center">
+                            <div>
+                                <a [routerLink]="['/tools/sc', sc.WSC]">{{sc.WSC | sc}}</a>
+                                <i class="mx-2 bi bi-arrow-right"></i>{{id | sc}}<i class="mx-2 bi bi-caret-right"></i>
+                                <a [routerLink]="['/tools/sc', sc.Create]">{{ sc.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+          </div>
+
+          <div *ngIf="skills?.Lvl2Open || skills?.Lvl2Close" class="accordion-item  my-3">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                Level 2
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSkills">
+              <div class="accordion-body">
+                <div class="list-group">
+                    <div *ngIf="skills?.Lvl2Open">
+                        <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Open</span></h5>
+                        <div class="list-group-item d-flex justify-content-center align-items-center">
+                            <div>{{id | sc}}<i class="mx-2 bi bi-arrow-right"></i>
+                                <a [routerLink]="['/tools/sc', skills.Lvl2Open?.WSC]">{{skills.Lvl2Open?.WSC | sc}}</a> 
+                                <i class="mx-2 bi bi-caret-right"></i>
+                                <a [routerLink]="['/tools/sc', skills.Lvl2Open?.Create]">{{ skills.Lvl2Open?.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="skills?.Lvl2Close">
+                        <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Close</span></h5>
+                        <div class="list-group-item d-flex justify-content-center align-items-center">
+                            <div><a [routerLink]="['/tools/sc', skills.Lvl2Close?.WSC]">{{skills.Lvl2Close?.WSC | sc}}</a> 
+                                <i class="mx-2 bi bi-arrow-right"></i>{{id | sc}}<i class="mx-2 bi bi-caret-right"></i> 
+                                <a [routerLink]="['/tools/sc', skills.Lvl2Close?.Create]">{{ skills.Lvl2Close?.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+
+          <div *ngIf="skills?.Lvl3Open || skills?.Lvl3Close" class="accordion-item my-3">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                Level 3
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSkills">
+              <div class="accordion-body">
+                <div class="list-group">
+                    <div *ngIf="skills?.Lvl3Open">
+                        <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Open</span></h5>
+                        <div class="list-group-item d-flex justify-content-center align-items-center">
+                            <div>{{id | sc}}<i class="mx-2 bi bi-arrow-right"></i> 
+                                <a [routerLink]="['/tools/sc', skills.Lvl3Open?.WSC]">{{skills.Lvl3Open?.WSC | sc}}</a> 
+                                <i class="mx-2 bi bi-caret-right"></i> 
+                                <a [routerLink]="['/tools/sc', skills.Lvl3Open?.Create]">{{skills.Lvl3Open?.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                        <div *ngIf="skills?.Lvl3Close">
+                        <h5 class="mb-2 mt-3 ml-2"><span class="badge bg-secondary">Close</span></h5>
+                        <div class="list-group-item d-flex justify-content-center align-items-center">
+                            <div>
+                                <a [routerLink]="['/tools/sc', skills.Lvl3Close?.WSC]">{{skills.Lvl3Close?.WSC | sc}}</a> 
+                                <i class="mx-2 bi bi-arrow-right"></i>{{id | sc}}<i class="mx-2 bi bi-caret-right"></i> 
+                                <a [routerLink]="['/tools/sc', skills.Lvl3Close?.Create]">{{skills.Lvl3Close?.Create | sc}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+    </div>
+
+    <h4 class="my-3">{{ id | sc }} Weapon Skills</h4>
+    <div class="list-group">
+    <div *ngFor="let ws of wslist" class="list-group-item">
+            <div>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <div><a [routerLink]="['/tools/jobs/weaponskills', ws.Name]">{{ws.Name | spell}}</a></div>
+                        <small class="text-muted" >{{ws.Jobs | jobsstr}}</small>
+                    </div>
+                    <div class="fw-light"><a [routerLink]="['/tools/ws', ws.Type]">{{ws.Type | skillType}}</a></div>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+</div>

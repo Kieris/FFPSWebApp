@@ -1,0 +1,196 @@
+<div *ngIf="item" class="container">
+<div class="d-flex mt-3 justify-content-between">
+    <h3>
+        {{item.Name | removeUnderscore}}
+    </h3>
+    <div>
+    <div class="d-flex justify-content-end">
+        <button *ngIf="item.Ah != 0" type="button" class="btn btn-secondary fw-bold shadow" (click)="searchAH(item.Name)">Search AH</button>
+    </div>
+    <div class="my-2">AH Category: <em>{{item.Ah | ahcat}}</em></div>
+    </div>
+</div>
+
+    <app-item-box [item]="item"></app-item-box>
+     <div class="badge bg-secondary rounded-pill my-3 text-wrap">{{flags}}</div>
+
+     <div *ngIf="fishDets">
+        <h3>Fishing</h3>
+        <div class="list-group">
+            <div class="list-group-item">
+                <div class="ms-2 my-3 me-auto">
+                        <span class="fw-light"> Skill Level: {{fishDets.Fish.MaxSkill}}</span>  
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="small">Rarity: {{fishDets.Fish.Rarity}}</div>
+                                <div class="small">Size: {{fishDets.Fish.Size}}</div>
+                                <div class="small">Base Delay: {{fishDets.Fish.BaseDelay}}</div>
+                            </div>
+                            <div>
+                                <div class="small">Base Move: {{fishDets.Fish.BaseMove}}</div>
+                                <div class="small">Type: <span *ngIf="fishDets.Fish.SizeType == 0">Small</span><span *ngIf="fishDets.Fish.SizeType == 1">Large</span></div>
+                                <div class="small">Water Type: <span *ngIf="fishDets.Fish.WaterType == 0">All</span><span *ngIf="fishDets.Fish.WaterType == 1">Fresh</span><span *ngIf="fishDets.Fish.WaterType == 2">Salt</span></div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <div *ngIf="fishDets.Fish.Item != 0" class="badge bg-secondary rounded-pill"><span>Item</span></div>
+                                <div *ngIf="fishDets.Fish.Legendary != 0" class="badge bg-info rounded-pill my-2"><span>Legendary</span></div>
+                                <div *ngIf="fishDets.Fish.KeyItem != 0" class="badge bg-info rounded-pill"><span>Key Item Required</span></div>
+                            </div>
+                        </div>                          
+
+                  </div>
+                  <div *ngIf="fishDets?.Lures">
+                    <h5>Best Bait</h5>
+                    <div *ngFor="let lure of fishDets?.Lures" class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                          <div class="fw-bold">   
+                              <a [routerLink]="['/tools/items', lure.LureId]">{{lure.Name}} </a>
+                          </div>
+                              <span class="fw-light"> Power: {{lure.Power}}</span>           
+                              <div class="small text-muted">Type: <span *ngIf="lure.Type == 0">Stackable</span><span *ngIf="lure.Type == 1">Lure</span><span *ngIf="lure.Type == 2">Special One Time Use</span></div>
+                              <div *ngIf="lure.Maxhook != 1" class="small text-muted">Max Hook: <span class="text-muted">{{lure.Maxhook}}</span></div>
+                        </div>
+                        <div *ngIf="lure.Losable != 0" class="badge bg-secondary rounded-pill" style="height: 20px;"><span>Losable</span></div>
+                    </div>
+                </div>
+                <div *ngIf="fishDets?.Rods" class="mt-3">
+                    <h5>Best Rods</h5>
+                    <div *ngFor="let rod of fishDets?.Rods" class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                          <div class="fw-bold">   
+                              <a [routerLink]="['/tools/items', rod.RodId]">{{rod.Name}} </a>
+                          </div>
+                              <span class="fw-light"> Material: <span *ngIf="rod.Material == 1">Synthetic</span><span *ngIf="rod.Material == 0">Wood</span></span>           
+                              <div class="small text-muted">Type: <span *ngIf="rod.SizeType == 0">Small</span><span *ngIf="rod.SizeType == 1">Large</span><span *ngIf="rod.SizeType == 2">Legendary</span></div>
+                              <div class="small text-muted">Durability: {{rod.Durability}}</div>
+                              <div class="small text-muted">Flag: <span *ngIf="rod.Flags == 0">Normal</span><span *ngIf="rod.Flags == 1">Small Fish Penalty</span><span *ngIf="rod.Flags == 2">Large Fish Penalty</span><span *ngIf="rod.Flags == 4">Legendary Bonus</span></div>
+                              <div class="small text-muted">Fish Attack: {{rod.FishAttack}}</div>
+
+                        </div>
+                        <div *ngIf="rod.Breakable != 0" class="badge bg-secondary rounded-pill" style="height: 20px;"><span>Breakable</span></div>
+                    </div>
+                </div>
+                <div *ngIf="fishAreas" class="mt-3">
+                    <h5>Areas to Catch</h5>
+                    <div *ngFor="let areas of fishAreas">
+                    <div *ngFor="let area of areas.Catch" class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                          <div class="fw-bold">   
+                              <a>{{area.AreaName}} </a>
+                          </div>
+                              <span class="fw-light">Zone: {{area?.ZoneName | spell}}</span>           
+                              <div class="small text-muted">Difficulty: <span *ngIf="area.ZoneDiff == 0">Normal</span><span *ngIf="area.ZoneDiff != 0">Harder</span></div>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>    
+    </div> 
+    <div class="list-group mt-3">
+        <h4>Dropped by</h4>
+        <span *ngIf="!dets?.Drops"><em>No mobs found that drop this item.</em></span>
+        <a *ngFor="let det of dets?.Drops" class="list-group-item d-flex justify-content-between"
+        [routerLink]="['/tools/mob', det.GrpId, det.ZoneId, det.PoolId]" >
+        <div *ngIf="det?.Name" class="ms-2 me-auto">
+            <div class="fw-bold">   
+                <span>{{det.Name | removeUnderscore}} </span>
+            </div>
+                <span class="fw-light">{{det.ZoneName |removeUnderscore}}</span>           
+                <div class="small text-muted">Spawn: <span class="text-muted">{{det.SpawnType | spawn}}</span></div>
+          </div>
+          <div>
+            <div class="small text-muted">Type: {{det.Drop?.DropType | droptype}}</div>
+            <div class="small text-muted">Item Rate: {{det.Drop?.ItemRate / 10}}%</div>
+            <div *ngIf="det.Drop?.DropType != 0" class="small text-muted">Group Rate: {{det.Drop?.GroupRate /10}}</div>
+          </div>
+        </a> 
+    </div>
+<div *ngIf="dets?.Recipes" class="mt-3">
+    <h4>Recipes</h4>
+    <div class="list-group">
+        <div *ngFor="let recip of dets?.Recipes" class="list-group-item">
+            <div class="fs-6 fw-bold d-flex justify-content-between">
+                <div>
+                    <span>Required Skills:</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Wood != 0">Woodworking ({{recip.Wood}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Cloth != 0">Clothcraft ({{recip.Cloth}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Gold != 0">Goldsmithing ({{recip.Gold}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Cook != 0">Cooking ({{recip.Cook}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Leather != 0">Leathercraft ({{recip.Leather}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Bone != 0">Bonecraft ({{recip.Bone}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Alchemy != 0">Alchemy ({{recip.Alchemy}})</span>
+                    <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Smith != 0">Smithing ({{recip.Smith}})</span>
+                </div>
+                <div *ngIf="recip.KeyItem != 0" class="badge bg-info rounded-pill" style="height: 20px;"><span>Key Item Required</span></div>
+                <div *ngIf="recip.Desynth != 0" class="fw-normal badge bg-secondary rounded-pill" style="height: 20px;">Desynth</div>
+            </div>
+            <div class="fs-6 fw-bold">
+                <span>Crystal:</span>
+                <span class="mx-2 fw-normal">Normal <a [routerLink]="['/tools/items', recip.Crystal]">({{recip.CrystalName| removeUnderscore}})</a></span>
+                <span *ngIf="recip.HQCrysName" class="mx-2 fw-normal">HQ <a [routerLink]="['/tools/items', recip.HQCrys]">({{recip.HQCrysName| removeUnderscore}})</a></span>
+            </div>
+            <div>
+                <div class="fw-bold fs-6">Ingredients:</div>
+                <div class="mx-2">
+                    <div><a [routerLink]="['/tools/items', recip.Ing1]">{{recip?.Ing1Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing2Name"><a [routerLink]="['/tools/items', recip.Ing2]">{{recip?.Ing2Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing3Name"><a [routerLink]="['/tools/items', recip.Ing3]">{{recip?.Ing3Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing4Name"><a [routerLink]="['/tools/items', recip.Ing4]">{{recip?.Ing4Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing5Name"><a [routerLink]="['/tools/items', recip.Ing5]">{{recip?.Ing5Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing6Name"><a [routerLink]="['/tools/items', recip.Ing6]">{{recip?.Ing6Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing7Name"><a [routerLink]="['/tools/items', recip.Ing7]">{{recip?.Ing7Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.Ing8Name"><a [routerLink]="['/tools/items', recip.Ing8]">{{recip?.Ing8Name | removeUnderscore}}</a></div>
+                </div>
+            </div>
+            <div>
+                <div class="fw-bold fs-6">Results:</div>
+                <div class="mx-2">
+                    <div>Result: <a [routerLink]="['/tools/items', recip.Result]">{{recip?.ResultName | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.ResHQ1Name">HQ1 Result: <a [routerLink]="['/tools/items', recip.ResHQ1]">{{recip?.ResHQ1Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.ResHQ2Name">HQ2 Result: <a [routerLink]="['/tools/items', recip.ResHQ2]">{{recip?.ResHQ2Name | removeUnderscore}}</a></div>
+                    <div *ngIf="recip.ResHQ3Name">HQ3 Result: <a [routerLink]="['/tools/items', recip.ResHQ3]">{{recip?.ResHQ3Name | removeUnderscore}}</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="recipes" class="mt-3">
+<div class="list-group mt-3">
+    <h4>Included in Recipes</h4>
+    <a *ngFor="let rec of recipes" class="list-group-item d-flex justify-content-between"
+    [routerLink]="['/tools/items', rec.Result]" >
+    <div class="ms-2 me-auto">
+        <div class="fw-normal">   
+            <span>{{rec.ResultName | removeUnderscore}} </span>
+        </div>
+      </div>
+    </a> 
+</div>
+</div>
+
+<div *ngIf="merchants" class="mt-3">
+    <div class="list-group mt-3">
+        <h4>Sold By</h4>
+        <div *ngFor="let merchs of merchants">
+            <div *ngFor="let merch of merchs.Npc" class="list-group-item d-flex justify-content-between">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">   
+                    <span>{{merch.Name}} </span>
+                </div>
+                <span>{{merch.Area}}</span>
+            <div class="small text-muted">Min: {{merchs.MinPrice}}g</div>
+            <div class="small text-muted">Max: {{merchs.MaxPrice}}g</div>
+            </div>
+<div class="d-flex flex-column justify-content-start align-items-start text-muted">
+            <div class="small">{{merch.Guild}}</div>
+            <div class="small ms-auto">Max Quantity: {{merchs.MaxQty}}</div>
+        </div>
+            </div> 
+        </div>
+    </div>
+    </div>
+</div>

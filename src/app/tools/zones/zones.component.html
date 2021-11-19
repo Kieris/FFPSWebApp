@@ -1,0 +1,26 @@
+
+<div class="container shadow-sm">
+    <h3>Zones</h3>
+    <div class="input-group mb-2 mt-3">
+        <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (ngModelChange)="onSearchTextChange()" aria-label="Search input">        
+      </div>
+      <div *ngIf="searchVal && filteredZones?.length == 0" class="alert d-flex align-items-center alert-info" role="alert">
+        <i class="bi bi-exclamation-diamond me-2"></i>
+        <div>
+          No results found
+        </div>
+      </div>
+    <div class="list-group">
+        <a *ngFor="let zone of filteredZones" [routerLink]="[zone.Name, zone.ZoneId]" class="list-group-item d-flex justify-content-between" >
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">   
+                <span>{{zone.Name | removeUnderscore}} </span>
+            </div>
+                <span class="fw-lighter">Zone: {{zone.ZoneId}}</span>
+          </div>
+          <div class="small text-muted">
+            {{zone.ZoneType | zoneType}}
+          </div>
+        </a> 
+    </div>
+</div>

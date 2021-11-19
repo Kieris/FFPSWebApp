@@ -1,0 +1,17 @@
+@import '../../../../assets/theme/theme.scss';
+@import '../../../../assets/theme/functions.scss';
+
+.list-group-item, .accordion-item, .accordion-button {
+    background-color: var(--cardBackground)!important;;
+    color: var(--cardColor)!important;  
+    border: 1px solid var(--border-color) !important; 
+}
+
+a {
+    color: var(--table-color)!important;
+    :hover {
+        color: var(--table-hover-color)!important;
+    }
+  }
+
+  

@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$default-font: 'Open Sans', sans-serif;
+
+$a-hover: rgb(218, 171, 42);
+$ff-bg-color: rgba(38, 45, 87, 0.9);
+// default colors
+.theme-wrapper {
+    --body-bg: black;
+    --cardColor: white;
+    --cardBackground: #272323;
+    --buttonColor: #FFF;
+    --buttonBackground: #FFF;
+    --navColor: #FFF;
+    --navBackground: #FFF;
+    --footerColor: #FFF;
+    --footerBackground: #FFF;
+    --footerAlignment: left;
+
+    --table-bg: #f8f9fa;
+    --table-striped-bg: #ecedee;
+    --table-striped-color: #000;
+    --table-active-bg: #dfe0e1;
+    --table-active-color: #000;
+    --table-hover-bg: #e5e6e7;
+    --table-hover-color: #000;
+    --table-color: #000;
+    --border-color: #dfe0e1;
+  }
+  
+  $variables: (
+    --body-bg: var(--body-bg),
+    --cardColor: var(--cardColor),
+    --cardBackground: var(--cardBackground),
+    --buttonColor: var(--buttonColor),
+    --buttonBackground: var(--buttonBackground),
+    --navColor: var(--navColor),
+    --navBackground: var(--navBackground),
+    --footerColor: var(--footerColor),
+    --footerBackground: var(--footerBackground),
+    --footerAlignment: var(--footerAlignment),
+    --table-bg: var(--table-bg),
+    --table-striped-bg: var(--table-striped-bg),
+    --table-striped-color: var(--table-striped-color),
+    --table-active-bg: var(--table-active-bg),
+    --table-active-color: var(--table-active-color),
+    --table-hover-bg: var(--table-hover-bg),
+    --table-hover-color: var(--table-hover-color),
+    --table-color: var(--table-color),
+    --border-color: var(--border-color),
+
+  );
+

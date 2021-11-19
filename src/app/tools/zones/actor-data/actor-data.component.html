@@ -1,0 +1,9 @@
+<h3>{{zoneEvents?.name}}</h3>
+<h5>ID: {{zoneEvents?.Id}}</h5>
+<div *ngFor="let evt of zoneEvents?.Events" class="p-3">
+<div>Event: {{evt?.id}}</div>
+    <div *ngFor="let dlg of evt?.dialogue" class="d-flex flex-column p-3">
+        <div>Dialog: {{dlg?.Id}}</div>
+        <div>{{dlg?.string}}</div>
+    </div>
+</div>

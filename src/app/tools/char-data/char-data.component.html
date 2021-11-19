@@ -1,0 +1,315 @@
+<div class="container">
+<h3>Player Search</h3>
+<div class="input-group mb-2 mt-3">
+  <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-label="Search input">
+  <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchClick()">Search</button>
+  </div>
+  
+</div>
+<div *ngIf="alertMessage" class="alert d-flex align-items-center" [class.alert-danger]="error" [class.alert-info]="!error" role="alert">
+  <i class="bi bi-exclamation-diamond me-2"></i>
+  <div>
+    {{alertMessage}}
+  </div>
+</div>
+<div class="mt-3" *ngIf="data" class="d-flex justify-content-center">
+<div>
+    <h4>{{data?.Name}}</h4>
+    <div>
+      <div class="row">
+        <div *ngIf="facePath" class="col mt-2">
+          <img class="rounded" [src]="facePath" width="120" height="128">
+        </div>
+        <div class="col">
+      <div class="d-flex mt-2 mb-3 justify-content-between" style="height: 128px;">
+        <div>
+            <div class="d-flex">
+            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[0]+".png"' width="32" height="32"> </div>
+            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[1]+".png"' width="32" height="32"> </div>
+            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[2]+".png"' width="32" height="32"> </div>
+            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[3]+".png"' width="32" height="32"> </div>
+            </div>
+            <div class="d-flex">
+                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[4]+".png"' width="32" height="32"> </div>
+                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[9]+".png"' width="32" height="32"> </div>
+                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[11]+".png"' width="32" height="32"> </div>
+                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[12]+".png"' width="32" height="32"> </div>
+                </div>
+                <div class="d-flex">
+                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[5]+".png"' width="32" height="32"> </div>
+                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[6]+".png"' width="32" height="32"> </div>
+                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[13]+".png"' width="32" height="32"> </div>
+                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[14]+".png"' width="32" height="32"> </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[15]+".png"' width="32" height="32"></div>
+                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[10]+".png"' width="32" height="32"> </div>
+                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[7]+".png"' width="32" height="32"> </div>
+                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[8]+".png"' width="32" height="32"> </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="h5">{{[data?.MLvl]}} {{jobsArr[data?.MJob]}}/{{[data?.SLvl]}} {{jobsArr[data?.SJob]}}</div>
+                        <small class="text-muted"><em style="margin-right: 40px;">Playtime: </em>{{data?.Playtime /3600 | number: '1.1-1'}} hours</small>
+                    <div class="d-flex justify-content-between" style="width: 180px; margin-top: auto;">
+                        <img src="../../../assets/imgs/bastok.png" width="20" height="20">
+                        <h6>{{data?.RankBastok}}</h6>
+                        <img src="../../../assets/imgs/sandoria.png" width="20" height="20">
+                        <h6>{{data?.RankSandy}}</h6>
+                        <img src="../../../assets/imgs/windurst.png" width="20" height="20">
+                        <h6>{{data?.RankWindy}}</h6>
+                     </div>
+                    </div>
+                </div>
+              </div>
+              </div>
+        <div class="d-flex justify-content-center row">
+        <div class="border jobs-box mr-2 col">
+            <div class="title-bar py-2">
+                <div class="text-center">Jobs</div>
+            </div>
+            
+            <table class="table table-sm table-borderless text-white">
+                <tbody>
+                  <tr>
+                    <td>Warrior</td>
+                    <td>{{data?.War}}</td>
+                    <td>Monk</td>
+                    <td>{{data?.Mnk}}</td>
+                  </tr>
+                  <tr>
+                    <td>White Mage</td>
+                    <td>{{data?.Whm}}</td>
+                    <td>Black Mage</td>
+                    <td>{{data?.Blm}}</td>
+                  </tr>                 
+                  <tr>
+                    <td>Red Mage</td>
+                    <td>{{data?.Rdm}}</td>
+                    <td>Thief</td>
+                    <td>{{data?.Thf}}</td>
+                  </tr>                
+                   <tr>
+                    <td>Paladin</td>
+                    <td>{{data?.War}}</td>
+                    <td>Dark Knight</td>
+                    <td>{{data?.Drk}}</td>
+                  </tr>            
+                 <tr>
+                    <td>Beastmaster</td>
+                    <td>{{data?.Bst}}</td>
+                    <td>Bard</td>
+                    <td>{{data?.Brd}}</td>
+                  </tr>            
+                <tr>
+                    <td>Ranger</td>
+                    <td>{{data?.War}}</td>
+                    <td>Samurai</td>
+                    <td>{{data?.Sam}}</td>
+                  </tr>              
+                <tr>
+                    <td>Ninja</td>
+                    <td>{{data?.Nin}}</td>
+                    <td>Dragoon</td>
+                    <td>{{data?.Drg}}</td>
+                  </tr>             
+                <tr>
+                    <td>Summoner</td>
+                    <td>{{data?.Smn}}</td>
+                    <td>Blue Mage</td>
+                    <td>{{data?.Blu}}</td>
+                  </tr>           
+                 <tr>
+                    <td>Corsair</td>
+                    <td>{{data?.Cor}}</td>
+                    <td>Puppetmaster</td>
+                    <td>{{data?.Pup}}</td>
+                  </tr>              
+                <tr>
+                    <td>Dancer</td>
+                    <td>{{data?.Dnc}}</td>
+                    <td>Scholar</td>
+                    <td>{{data?.Sch}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="border jobs-box col">
+            <div class="title-bar py-2">
+                <div class="text-center">Craft Skills</div>
+            </div>
+            <table class="table table-sm table-borderless text-white">
+                <tbody>
+                  <tr>
+                    <td>Fishing</td>
+                    <td>{{skills[47]}}</td>
+                  </tr>
+                  <tr>
+                    <td>Woodworking</td>
+                    <td>{{skills[48]}}</td>
+                  </tr>                 
+                  <tr>
+                    <td>Smithing</td>
+                    <td>{{skills[49]}}</td>
+                  </tr>                
+                   <tr>
+                    <td>Goldsmithing</td>
+                    <td>{{skills[50]}}</td>
+                  </tr>            
+                 <tr>
+                    <td>Clothcraft</td>
+                    <td>{{skills[51]}}</td>
+                  </tr>            
+                <tr>
+                    <td>Leathercraft</td>
+                    <td>{{skills[52]}}</td>
+                  </tr>              
+                <tr>
+                    <td>Bonecraft</td>
+                    <td>{{skills[53]}}</td>
+                  </tr>             
+                <tr>
+                    <td>Alchemy</td>
+                    <td>{{skills[54]}}</td>
+                  </tr>           
+                 <tr>
+                    <td>Cooking</td>
+                    <td>{{skills[55]}}</td>
+                  </tr>              
+                <tr>
+                    <td>Synergy</td>
+                    <td>{{skills[56]}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="border jobs-box mr-2 col">
+          <div class="title-bar py-2">
+              <div class="text-center">Combat Skills</div>
+          </div>
+          
+          <table class="table table-sm table-borderless text-white">
+              <tbody>
+                <tr>
+                  <td>Hand-to-Hand</td>
+                  <td>{{skills[1]}}</td>
+                  <td>Dagger</td>
+                  <td>{{skills[2]}}</td>
+                </tr>
+                <tr>
+                  <td>Sword</td>
+                  <td>{{skills[3]}}</td>
+                  <td>Great Sword</td>
+                  <td>{{skills[4]}}</td>
+                </tr>
+                <tr>
+                  <td>Axe</td>
+                  <td>{{skills[5]}}</td>
+                  <td>Great Axe</td>
+                  <td>{{skills[6]}}</td>
+                </tr>
+                <tr>
+                  <td>Scythe</td>
+                  <td>{{skills[7]}}</td>
+                  <td>Polearm</td>
+                  <td>{{skills[8]}}</td>
+                </tr>
+                <tr>
+                  <td>Katana</td>
+                  <td>{{skills[9]}}</td>
+                  <td>Great Katana</td>
+                  <td>{{skills[10]}}</td>
+                </tr>
+                <tr>
+                  <td>Club</td>
+                  <td>{{skills[11]}}</td>
+                  <td>Staff</td>
+                  <td>{{skills[12]}}</td>
+                </tr>
+                <tr>
+                  <td>Automaton Melee</td>
+                  <td>{{skills[22]}}</td>
+                  <td>Automaton Ranged</td>
+                  <td>{{skills[23]}}</td>
+                </tr>
+                <tr>
+                  <td>Automaton Magic</td>
+                  <td>{{skills[24]}}</td>
+                  <td>Archery</td>
+                  <td>{{skills[25]}}</td>
+                </tr>
+                <tr>
+                  <td>Marksmanship</td>
+                  <td>{{skills[26]}}</td>
+                  <td>Throwing</td>
+                  <td>{{skills[27]}}</td>
+                </tr>
+                <tr>
+                  <td>Guard</td>
+                  <td>{{skills[28]}}</td>
+                  <td>Evasion</td>
+                  <td>{{skills[29]}}</td>
+                </tr>
+                <tr>
+                  <td>Shield</td>
+                  <td>{{skills[30]}}</td>
+                  <td>Parry</td>
+                  <td>{{skills[31]}}</td>
+                </tr>           
+              </tbody>
+            </table>
+      </div>
+      <div class="border jobs-box mr-2 col">
+        <div class="title-bar py-2">
+            <div class="text-center">Magic Skills</div>
+        </div>
+        
+        <table class="table table-sm table-borderless text-white">
+            <tbody>
+              <tr>
+                <td>Divine</td>
+                <td>{{skills[32]}}</td>
+                <td>Healing</td>
+                <td>{{skills[33]}}</td>
+              </tr>
+              <tr>
+                <td>Enhancing</td>
+                <td>{{skills[34]}}</td>
+                <td>Enfeebling</td>
+                <td>{{skills[35]}}</td>
+              </tr>
+              <tr>
+                <td>Elemental</td>
+                <td>{{skills[36]}}</td>
+                <td>Dark</td>
+                <td>{{skills[37]}}</td>
+              </tr>
+              <tr>
+                <td>Summoning</td>
+                <td>{{skills[38]}}</td>
+                <td>Ninjitsu</td>
+                <td>{{skills[39]}}</td>
+              </tr>
+              <tr>
+                <td>Singing</td>
+                <td>{{skills[40]}}</td>
+                <td>String</td>
+                <td>{{skills[41]}}</td>
+              </tr>
+              <tr>
+                <td>Wind</td>
+                <td>{{skills[42]}}</td>
+                <td>Blue</td>
+                <td>{{skills[43]}}</td>
+              </tr>       
+            </tbody>
+          </table>
+    </div>
+    </div>
+
+
+    </div>
+</div>
+</div>
+</div>

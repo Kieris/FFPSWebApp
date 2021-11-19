@@ -1,0 +1,34 @@
+<div class="container">
+<h3 class="my-3">{{id | craft}}</h3>
+
+<div class="accordion-body">
+    <div class="fw-light fs-5 mb-3">Recipes for Level {{searchVal1}} to {{searchVal1 + 5}}</div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-title">Level</span>
+      <input class="form-range form-control form-control-sm" type="range" min="1" max="105" aria-label=".form-control-sm" 
+        [(ngModel)]="searchVal1" (keyup.enter)="searchClick()" aria-describedby="basic-title">
+      <button class="btn btn-sm bg-info" (click)="searchClick()">Update</button>
+      </div>
+     
+    <div class="list-group">
+        <div *ngFor="let recipe of seaItems">
+            <div class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    <a [routerLink]="['/tools/items/', recipe.Result]">
+                       {{recipe.ResultName}}
+                    </a>
+                    <div>
+                        <span>Skill Level: {{recipe.Skill}}</span>
+                    </div>
+               </div>
+               <small class="fs-lighter">Quantity: {{recipe.ResQty}}</small>
+              </div>
+              <div *ngIf="recipe.KeyItem != 0" class="badge bg-info rounded-pill"><span>Key Item Required</span></div>
+              <div *ngIf="recipe.Desynth != 0" class="badge bg-secondary rounded-pill"><span>Desynth</span></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

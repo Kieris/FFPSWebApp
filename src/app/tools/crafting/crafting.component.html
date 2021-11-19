@@ -1,0 +1,13 @@
+<div class="container">    
+        <h3 class="my-3">Crafting</h3>
+        <div class="list-group">
+            <a *ngFor="let craft of crafts" class="list-group-item" [routerLink]="['/tools/crafts', craft.id]">
+                <div class="d-flex align-items-center" >
+                    <img [src]='"../../../assets/imgs/crafts/"+craft?.id+".png"'>
+                    <span class="ms-3 fw-light">{{craft?.name}}</span>
+                </div>
+            </a>
+        </div>
+    
+    
+    </div>

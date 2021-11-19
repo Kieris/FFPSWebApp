@@ -1,0 +1,40 @@
+<div class="container">
+    <h3 class="mt-3">{{id | spell}}</h3>
+<div class="my-3" *ngIf="!notes?.SpellId">
+    <h4>Script Notes</h4>
+    <div *ngFor="let note of notes">{{note}}</div>
+
+</div>
+<div *ngIf="notes?.SpellId">
+    <h4 class="my-3">Script Notes</h4>
+    <div *ngFor="let note of notes.Notes">{{note}}</div>
+    <h4 class="my-3">Database Findings</h4>
+    
+    <div>
+        <div class="row">
+          <div class="col">
+            <div *ngIf="notes.SetPoints != 0">Points to Set Spell: {{notes.SetPoints}}</div>
+            <div *ngIf="notes.Mod.Str != 0">Trait: {{notes.Mod.Str}}</div>
+            <div *ngIf="notes.TraitCatWeight != 0">Points toward obtaining trait: {{notes.TraitCatWeight}}</div>
+            <div *ngIf="notes.PointsNeeded != 0">Points needed to obtain trait: {{notes.PointsNeeded}}</div>
+            <div *ngIf="notes.LearnFrom">
+            Can learn from:
+            <div>
+              <div *ngFor="let mob of notes.LearnFrom" class="mx-2">{{mob | spell}} </div>
+            </div>
+          </div>
+          <div *ngIf="notes.Modifs">
+            Mods for equipping spell:
+            <div>
+              <div *ngFor="let mod of notes.Modifs" class="mx-2">{{mod.Str}}</div>
+            </div>
+            </div>
+            <div *ngIf="notes.PrimarySC != 0">Primary SC: {{notes.PrimarySC | sc}}</div>
+            <div *ngIf="notes.SecondarySC != 0">Secondary SC: {{notes.SecondarySC | sc}}</div>
+
+
+          </div>
+        </div>
+      </div>
+</div>
+</div>

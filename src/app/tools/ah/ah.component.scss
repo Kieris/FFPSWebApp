@@ -1,0 +1,40 @@
+
+@import '../../../assets/theme/theme.scss';
+@import '../../../assets/theme/functions.scss';
+
+.card-bg {
+    background-color: var(--cardBackground);
+    color: var(--cardColor);  
+  }
+
+  .list-group-item {
+    background-color: var(--cardBackground)!important;;
+    color: var(--cardColor)!important;  
+    border: 1px solid var(--border-color) !important; 
+}
+
+  /*.ah-table {
+        background-color: var(--table-bg) !important;
+        color: var(--table-color)!important;
+        border-color: var(--border-color)!important;
+        /*
+        tr, td {
+        :active {
+            color: var(--table-active-color)!important; 
+            background-color: var(--table-active-bg) !important;
+        }
+        :hover {
+            color: var(--table-hover-color)!important; 
+            background-color: var(--table-hover-bg) !important;
+        }
+    } 
+  tr:nth-child(even) {
+    background-color: var(--table-striped-bg) ;
+  }
+  }*/
+  a {
+    color: var(--table-color)!important;
+    :hover {
+        color: var(--table-hover-color)!important;
+    }
+  }

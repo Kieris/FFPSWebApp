@@ -1,0 +1,47 @@
+@import '../../assets/theme/theme.scss';
+@import '../../assets/theme/functions.scss';
+
+.card-bg {
+    background-color: var(--body-bg);
+    color: var(--cardColor);  
+  }
+
+  .menu-all { 
+    height: 100vh; 
+    background-color: $ff-bg-color !important;
+  }
+
+.nav-list {
+  font-family: Arial, sans-serif;
+  font-size: 1.1rem;
+}
+  .menu {
+    width: 240px;
+  }
+
+  .nav-top {
+      display: none;
+      background-color: $ff-bg-color !important; 
+  }
+
+  .logo {
+    font-family: ffxf;
+    padding-top: 2px;
+    font-size: 2.2rem;
+    line-height: 2.3rem;
+    opacity: 0.8;
+    width: 100%;
+    text-align: justify;
+  }
+
+  @media (max-width: 668px) {
+    .menu {
+      display: none !important;
+    }
+    .nav-top {
+        display: block !important;
+    }
+    .router-comp {
+        padding-top: 60px !important;
+    }
+  }
