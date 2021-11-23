@@ -16,8 +16,6 @@
     </div>
   </div>
 <div>
-
-  <!--<img [src]='"https://www.ffxiah.com/images/icon/"+product.ItemID+".png"' width="32" height="32">-->
   <div class="list-group">
     <div *ngFor="let product of products" class="list-group-item">
       <div class="d-flex justify-content-between">
@@ -29,7 +27,9 @@
       <div class="small">Price: <span>{{product.Price}}g</span></div>
     </div>
     <div class="d-flex flex-column align-items-start justify-content-between">
-      <div><img [src]='"https://www.ffxiah.com/images/icon/"+product.ItemID+".png"' width="32" height="32"></div>
+      <div>
+        <app-item-icon [Val]="product?.ItemID" Eq="0"></app-item-icon>
+      </div>
       <div *ngIf="product.Stack != 0" class="badge bg-secondary ms-2" style="height: 20px;">S</div>
     </div>
     </div>

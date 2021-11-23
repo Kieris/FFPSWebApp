@@ -1,0 +1,73 @@
+<div class="container">
+    <div>
+    <h3 class="mt-3">Attachments</h3>
+    <div class="small mb-3 text-muted">(Count = Matching Element Maneuver Count)</div>
+    </div>
+<div class="list-group shadow">
+    <div *ngFor="let att of atts">
+        <div class="list-group-item">
+            <div class="ms-2 d-flex justify-content-between">
+                <div>
+        <div class="d-flex">
+          <app-item-icon class="pe-2" [Val]="att?.ItemId" Eq="0"></app-item-icon>
+          <div>
+            <div class="fw-bold pe-2 pt-1">{{att.Name | spell}}</div>
+            <div class="small">{{att?.Note}}</div>
+          </div>
+        </div>
+    </div>
+        <div class="d-flex flex-col">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <div *ngIf="att?.ElemTot?.Fire != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/fire.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Fire}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Ice != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/ice.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Ice}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Wind != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/wind.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Wind}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Earth != 0"class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/earth.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Earth}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Lightning != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/lightning.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Lightning}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Water != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/water.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Water}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Light != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/light.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Light}}</span>
+              </div>
+              <div *ngIf="att?.ElemTot?.Dark != 0" class="d-flex align-items-center">
+                <img src="../../../../assets/imgs/dark.png" width="16" height="16">
+                <span class="px-2">{{att?.ElemTot?.Dark}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="att.Mods" class="pt-3 ms-3">Script Modifiers</div>
+            <div *ngIf="att.Mods" class="px-3 py-2 d-flex flex-wrap justify-content-center w-100">
+                <div *ngFor="let mod of att.Mods" class="d-flex justify-content-center">
+                <div class="list-group-item small py-2">
+                    <div>If count = {{mod.Maneuver}}, </div>
+                    <div class="d-flex justify-content-center">
+                    <span *ngIf="mod.Frame != ''">and Frame used is {{mod.Frame}}, </span>
+                    <span>{{mod.Mod}} <span *ngIf="mod.Val < 0">+{{mod.Val}}</span><span *ngIf="mod.Val > 0">+{{mod.Val}}</span></span>
+                     </div>
+                </div>
+            </div>
+            </div>
+        
+
+        </div>
+    </div>
+</div>
+</div>

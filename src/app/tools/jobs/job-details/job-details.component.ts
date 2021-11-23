@@ -18,8 +18,15 @@ af;
 pets;
 automatonSpells;
 automatonFrames;
-
+heads = [];
+frames = [];
+pupSkills;
 searchVal: number = 75;
+searchPupVal: number = 75;
+searchPupFr;
+searchPupHe;
+
+
   constructor(private route: ActivatedRoute, private ds: ApiService) {
     if (route.params) {
       route.params.subscribe(val => {
@@ -42,6 +49,13 @@ searchVal: number = 75;
           });
           this.ds.sendGetPupFrames().subscribe((data: any[])=>{
             this.automatonFrames = data;
+            if (this.automatonFrames) {
+              this.heads = this.automatonFrames.filter(item => item.Slot == 1);
+              this.frames = this.automatonFrames.filter(item => item.Slot == 2);
+              this.searchPupFr = this.frames[0].ItemId;
+              this.searchPupHe = this.heads[0].ItemId;
+              this.searchPupClick();
+            }
           });
         }
         this.ds.sendGetSkillRanksByJob(this.id).subscribe((data: any[])=>{
@@ -82,6 +96,11 @@ searchVal: number = 75;
     });
   }
 
+  searchPupClick() {
+    this.ds.sendGetPupSkills(this.searchPupHe, this.searchPupFr, this.searchPupVal).toPromise().then(x => {
+      this.pupSkills = x;
+    })
+  }
 
   getElem(value: number) {
     switch (value) {

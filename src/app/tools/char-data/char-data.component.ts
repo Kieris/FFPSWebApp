@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-char-data',
@@ -59,7 +60,7 @@ export class CharDataComponent implements OnInit {
   }
 
   getImgPath(face, race): string {
-    var str: string = "../../../assets/imgs/faces/";
+    var str: string = environment.ImgFilePath + "faces/";
     switch (race) {
       default:
       case 1:

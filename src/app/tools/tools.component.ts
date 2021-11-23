@@ -16,7 +16,7 @@ export class ToolsComponent implements OnInit {
 
    light() {
       this.themeWrapper.style.setProperty('--cardColor', "black");
-      this.themeWrapper.style.setProperty('--body-bg', "white");
+      this.themeWrapper.style.setProperty('--body-bg', "whitesmoke");
       this.themeWrapper.style.setProperty('--cardBackground', "#f8f9fa");    
       this.themeWrapper.style.setProperty("--table-bg", "#f8f9fa");
       this.themeWrapper.style.setProperty("--table-striped-bg", "#ecedee");
@@ -311,12 +311,14 @@ export class DetectTypePipe implements PipeTransform {
     if (value & 0x0004) {
       str += "Low HP, "
     }
+    /*
     if (value & 0x0008) {
       str += "Unknown1, "
     }
     if (value & 0x0010) {
       str += "Unknown2, "
     }
+    */
     if (value & 0x0020) {
       str += "Magic, "
     }
@@ -509,6 +511,26 @@ export class CraftPipe implements PipeTransform {
       case "Smith": return "Smithing";      
       case "Gold": return "Goldsmithing";
       default: return value;
+    }
+  }
+}
+
+@Pipe({ name: 'time' })
+export class TimePipe implements PipeTransform {
+  transform(value: number, args?: any): any {
+    var str = ''
+    var temp = 0;
+    if(value > 60) {
+      temp = value % 60;
+      value = (value - temp)/60;
+      if(temp > 0) {
+        return value + "m " + temp + "s";
+      } else {
+        return value + "m ";
+      }
+       
+    } else {
+      return value + "s";
     }
   }
 }

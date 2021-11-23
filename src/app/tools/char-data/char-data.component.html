@@ -1,5 +1,5 @@
 <div class="container">
-<h3>Player Search</h3>
+<h3 class="mt-3">Player Search</h3>
 <div class="input-group mb-2 mt-3">
   <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-label="Search input">
   <div class="input-group-append">
@@ -13,133 +13,157 @@
     {{alertMessage}}
   </div>
 </div>
+ <!-- 
+<img src="../../../assets/imgs/hm_F7A_homam.png">
+<img src="../../../assets/imgs/hf_F2B_homam.png">
+
+<img src="../../../assets/imgs/tm_F4A_homam.png">
+<img src="../../../assets/imgs/g_F1A_homam.png">
+<img src="../../../assets/imgs/em_F2B_homam.png">
+<img src="../../../assets/imgs/ef_F3B_homam.png">
+<img src="../../../assets/imgs/tf_F1A_homam.png">
+<img src="../../../assets/imgs/tf_F3B_homam.png">
+
+<img src="../../../assets/imgs/m_F2B_homam.png">
+<img src="../../../assets/imgs/g_F2B_homam.png">-->
+
+
+
+
+
+
+
 <div class="mt-3" *ngIf="data" class="d-flex justify-content-center">
 <div>
-    <h4>{{data?.Name}}</h4>
+    <div class="char-job">{{data?.Name}}</div>
     <div>
-      <div class="row">
-        <div *ngIf="facePath" class="col mt-2">
-          <img class="rounded" [src]="facePath" width="120" height="128">
+      <div class="d-flex flex-wrap">
+        <div *ngIf="facePath" class="jobs-box d-flex justify-content-center flex-grow-1">
+          <img src="../../../assets/imgs/m_F2B_homam.png">
+
+        <!-- <img class="rounded" [src]="facePath" width="120" height="128">-->
         </div>
-        <div class="col">
-      <div class="d-flex mt-2 mb-3 justify-content-between" style="height: 128px;">
+        <div class="d-flex flex-column flex-grow-1 jobs-box justify-content-center p-3">
+      <div class="d-flex mt-2 mb-3 flex-column justify-content-between align-items-center flex-grow-1">
+        <div class="ps-2 d-flex flex-column">
+          <div class="char-job">{{[data?.MLvl]}} {{jobsArr[data?.MJob]}}/{{[data?.SLvl]}} {{jobsArr[data?.SJob]}}</div>
+          <div class="small pb-2" style="font-family: Lato;"><em style="margin-right: 40px;">Playtime: </em>{{data?.Playtime /3600 | number: '1.1-1'}} hours</div>
+      <div class="d-flex justify-content-between align-items-center m-2 pb-3" style="width: 180px; margin-top: auto;">
+          <img src="../../../assets/imgs/bast_flg.jpg" width="26" height="26">
+          <div>{{data?.RankBastok}}</div>
+          <img src="../../../assets/imgs/sand_flg.jpg" width="26" height="26">
+          <div>{{data?.RankSandy}}</div>
+          <img src="../../../assets/imgs/wind_flg.jpg" width="26" height="26">
+          <div>{{data?.RankWindy}}</div>
+       </div>
+      </div>
         <div>
             <div class="d-flex">
-            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[0]+".png"' width="32" height="32"> </div>
-            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[1]+".png"' width="32" height="32"> </div>
-            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[2]+".png"' width="32" height="32"> </div>
-            <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[3]+".png"' width="32" height="32"> </div>
+              <app-item-icon [Val]="equip[0]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[1]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[2]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[3]" Eq="2"></app-item-icon>
             </div>
             <div class="d-flex">
-                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[4]+".png"' width="32" height="32"> </div>
-                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[9]+".png"' width="32" height="32"> </div>
-                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[11]+".png"' width="32" height="32"> </div>
-                <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[12]+".png"' width="32" height="32"> </div>
+              <app-item-icon [Val]="equip[4]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[9]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[11]" Eq="2"></app-item-icon>
+              <app-item-icon [Val]="equip[12]" Eq="2"></app-item-icon>
                 </div>
                 <div class="d-flex">
-                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[5]+".png"' width="32" height="32"> </div>
-                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[6]+".png"' width="32" height="32"> </div>
-                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[13]+".png"' width="32" height="32"> </div>
-                    <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[14]+".png"' width="32" height="32"> </div>
+                  <app-item-icon [Val]="equip[5]" Eq="2"></app-item-icon>
+                  <app-item-icon [Val]="equip[6]" Eq="2"></app-item-icon>
+                  <app-item-icon [Val]="equip[13]" Eq="2"></app-item-icon>
+                  <app-item-icon [Val]="equip[14]" Eq="2"></app-item-icon>
                     </div>
                     <div class="d-flex">
-                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[15]+".png"' width="32" height="32"></div>
-                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[10]+".png"' width="32" height="32"> </div>
-                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[7]+".png"' width="32" height="32"> </div>
-                        <div class="eq-col"><img [src]='"https://www.ffxiah.com/images/icon/"+equip[8]+".png"' width="32" height="32"> </div>
+                      <app-item-icon [Val]="equip[15]" Eq="2"></app-item-icon>
+                      <app-item-icon [Val]="equip[10]" Eq="2"></app-item-icon>
+                      <app-item-icon [Val]="equip[7]" Eq="2"></app-item-icon>
+                      <app-item-icon [Val]="equip[8]" Eq="2"></app-item-icon>
                         </div>
                     </div>
-                    <div class="d-flex flex-column">
-                        <div class="h5">{{[data?.MLvl]}} {{jobsArr[data?.MJob]}}/{{[data?.SLvl]}} {{jobsArr[data?.SJob]}}</div>
-                        <small class="text-muted"><em style="margin-right: 40px;">Playtime: </em>{{data?.Playtime /3600 | number: '1.1-1'}} hours</small>
-                    <div class="d-flex justify-content-between" style="width: 180px; margin-top: auto;">
-                        <img src="../../../assets/imgs/bastok.png" width="20" height="20">
-                        <h6>{{data?.RankBastok}}</h6>
-                        <img src="../../../assets/imgs/sandoria.png" width="20" height="20">
-                        <h6>{{data?.RankSandy}}</h6>
-                        <img src="../../../assets/imgs/windurst.png" width="20" height="20">
-                        <h6>{{data?.RankWindy}}</h6>
-                     </div>
-                    </div>
+
                 </div>
               </div>
-              </div>
-        <div class="d-flex justify-content-center row">
-        <div class="border jobs-box mr-2 col">
-            <div class="title-bar py-2">
-                <div class="text-center">Jobs</div>
+              <div class="jobs-box mr-2 flex-grow-1">
+                <div class="title-bar py-2">
+                    <div class="text-center">Jobs</div>
+                </div>
+                
+                <table class="table p-3  table-sm table-borderless text-white">
+                    <tbody>
+                      <tr>
+                        <td>Warrior</td>
+                        <td>{{data?.War}}</td>
+                        <td>Monk</td>
+                        <td>{{data?.Mnk}}</td>
+                      </tr>
+                      <tr>
+                        <td>White Mage</td>
+                        <td>{{data?.Whm}}</td>
+                        <td>Black Mage</td>
+                        <td>{{data?.Blm}}</td>
+                      </tr>                 
+                      <tr>
+                        <td>Red Mage</td>
+                        <td>{{data?.Rdm}}</td>
+                        <td>Thief</td>
+                        <td>{{data?.Thf}}</td>
+                      </tr>                
+                       <tr>
+                        <td>Paladin</td>
+                        <td>{{data?.War}}</td>
+                        <td>Dark Knight</td>
+                        <td>{{data?.Drk}}</td>
+                      </tr>            
+                     <tr>
+                        <td>Beastmaster</td>
+                        <td>{{data?.Bst}}</td>
+                        <td>Bard</td>
+                        <td>{{data?.Brd}}</td>
+                      </tr>            
+                    <tr>
+                        <td>Ranger</td>
+                        <td>{{data?.War}}</td>
+                        <td>Samurai</td>
+                        <td>{{data?.Sam}}</td>
+                      </tr>              
+                    <tr>
+                        <td>Ninja</td>
+                        <td>{{data?.Nin}}</td>
+                        <td>Dragoon</td>
+                        <td>{{data?.Drg}}</td>
+                      </tr>             
+                    <tr>
+                        <td>Summoner</td>
+                        <td>{{data?.Smn}}</td>
+                        <td>Blue Mage</td>
+                        <td>{{data?.Blu}}</td>
+                      </tr>           
+                     <tr>
+                        <td>Corsair</td>
+                        <td>{{data?.Cor}}</td>
+                        <td>Puppetmaster</td>
+                        <td>{{data?.Pup}}</td>
+                      </tr>              
+                    <tr>
+                        <td>Dancer</td>
+                        <td>{{data?.Dnc}}</td>
+                        <td>Scholar</td>
+                        <td>{{data?.Sch}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
-            
-            <table class="table table-sm table-borderless text-white">
-                <tbody>
-                  <tr>
-                    <td>Warrior</td>
-                    <td>{{data?.War}}</td>
-                    <td>Monk</td>
-                    <td>{{data?.Mnk}}</td>
-                  </tr>
-                  <tr>
-                    <td>White Mage</td>
-                    <td>{{data?.Whm}}</td>
-                    <td>Black Mage</td>
-                    <td>{{data?.Blm}}</td>
-                  </tr>                 
-                  <tr>
-                    <td>Red Mage</td>
-                    <td>{{data?.Rdm}}</td>
-                    <td>Thief</td>
-                    <td>{{data?.Thf}}</td>
-                  </tr>                
-                   <tr>
-                    <td>Paladin</td>
-                    <td>{{data?.War}}</td>
-                    <td>Dark Knight</td>
-                    <td>{{data?.Drk}}</td>
-                  </tr>            
-                 <tr>
-                    <td>Beastmaster</td>
-                    <td>{{data?.Bst}}</td>
-                    <td>Bard</td>
-                    <td>{{data?.Brd}}</td>
-                  </tr>            
-                <tr>
-                    <td>Ranger</td>
-                    <td>{{data?.War}}</td>
-                    <td>Samurai</td>
-                    <td>{{data?.Sam}}</td>
-                  </tr>              
-                <tr>
-                    <td>Ninja</td>
-                    <td>{{data?.Nin}}</td>
-                    <td>Dragoon</td>
-                    <td>{{data?.Drg}}</td>
-                  </tr>             
-                <tr>
-                    <td>Summoner</td>
-                    <td>{{data?.Smn}}</td>
-                    <td>Blue Mage</td>
-                    <td>{{data?.Blu}}</td>
-                  </tr>           
-                 <tr>
-                    <td>Corsair</td>
-                    <td>{{data?.Cor}}</td>
-                    <td>Puppetmaster</td>
-                    <td>{{data?.Pup}}</td>
-                  </tr>              
-                <tr>
-                    <td>Dancer</td>
-                    <td>{{data?.Dnc}}</td>
-                    <td>Scholar</td>
-                    <td>{{data?.Sch}}</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-        <div class="border jobs-box col">
+
+              </div>
+        <div class="d-flex justify-content-center flex-wrap">
+        <div class="jobs-box flex-grow-1">
             <div class="title-bar py-2">
                 <div class="text-center">Craft Skills</div>
             </div>
-            <table class="table table-sm table-borderless text-white">
+            <table class="table p-3 table-sm table-borderless text-white">
                 <tbody>
                   <tr>
                     <td>Fishing</td>
@@ -184,12 +208,12 @@
                 </tbody>
               </table>
         </div>
-        <div class="border jobs-box mr-2 col">
+        <div class="jobs-box mr-2 flex-grow-1">
           <div class="title-bar py-2">
               <div class="text-center">Combat Skills</div>
           </div>
           
-          <table class="table table-sm table-borderless text-white">
+          <table class="table p-3  table-sm table-borderless text-white">
               <tbody>
                 <tr>
                   <td>Hand-to-Hand</td>
@@ -260,12 +284,12 @@
               </tbody>
             </table>
       </div>
-      <div class="border jobs-box mr-2 col">
+      <div class="jobs-box mr-2 flex-grow-1">
         <div class="title-bar py-2">
             <div class="text-center">Magic Skills</div>
         </div>
         
-        <table class="table table-sm table-borderless text-white">
+        <table class="table p-3  table-sm table-borderless text-white">
             <tbody>
               <tr>
                 <td>Divine</td>

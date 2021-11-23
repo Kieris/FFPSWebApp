@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-jobs',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
+imgPath = environment.ImgFilePath;  
 jobs = [
   { name: "Warrior", id: 1 },
   { name: "Monk", id: 2 },

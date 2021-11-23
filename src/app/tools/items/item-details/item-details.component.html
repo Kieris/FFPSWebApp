@@ -1,7 +1,7 @@
 <div *ngIf="item" class="container">
 <div class="d-flex mt-3 justify-content-between">
     <h3>
-        {{item.Name | removeUnderscore}}
+        {{item.Name | spell}}
     </h3>
     <div>
     <div class="d-flex justify-content-end">
@@ -20,11 +20,12 @@
             <div class="list-group-item">
                 <div class="ms-2 my-3 me-auto">
                         <span class="fw-light"> Skill Level: {{fishDets.Fish.MaxSkill}}</span>  
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <div>
                                 <div class="small">Rarity: {{fishDets.Fish.Rarity}}</div>
                                 <div class="small">Size: {{fishDets.Fish.Size}}</div>
                                 <div class="small">Base Delay: {{fishDets.Fish.BaseDelay}}</div>
+                                <div *ngIf="fishDets.Fish.KeyItem" class="small"><span>Required Key Item: <a href="">{{fishDets.Fish.KeyItem | titlecase}}</a></span></div>
                             </div>
                             <div>
                                 <div class="small">Base Move: {{fishDets.Fish.BaseMove}}</div>
@@ -32,9 +33,8 @@
                                 <div class="small">Water Type: <span *ngIf="fishDets.Fish.WaterType == 0">All</span><span *ngIf="fishDets.Fish.WaterType == 1">Fresh</span><span *ngIf="fishDets.Fish.WaterType == 2">Salt</span></div>
                             </div>
                             <div class="d-flex flex-column">
-                                <div *ngIf="fishDets.Fish.Item != 0" class="badge bg-secondary rounded-pill"><span>Item</span></div>
-                                <div *ngIf="fishDets.Fish.Legendary != 0" class="badge bg-info rounded-pill my-2"><span>Legendary</span></div>
-                                <div *ngIf="fishDets.Fish.KeyItem != 0" class="badge bg-info rounded-pill"><span>Key Item Required</span></div>
+                                <div *ngIf="fishDets.Fish.Item != 0" class="badge bg-secondary my-1 rounded-pill"><span>Item</span></div>
+                                <div *ngIf="fishDets.Fish.Legendary != 0" class="badge bg-info my-1 rounded-pill my-2"><span>Legendary</span></div>
                             </div>
                         </div>                          
 
@@ -111,7 +111,7 @@
     <h4>Recipes</h4>
     <div class="list-group">
         <div *ngFor="let recip of dets?.Recipes" class="list-group-item">
-            <div class="fs-6 fw-bold d-flex justify-content-between">
+            <div class="fs-6 fw-bold d-flex flex-wrap justify-content-between">
                 <div>
                     <span>Required Skills:</span>
                     <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Wood != 0">Woodworking ({{recip.Wood}})</span>
@@ -123,8 +123,8 @@
                     <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Alchemy != 0">Alchemy ({{recip.Alchemy}})</span>
                     <span class="mx-2 fw-normal fst-italic" *ngIf="recip.Smith != 0">Smithing ({{recip.Smith}})</span>
                 </div>
-                <div *ngIf="recip.KeyItem != 0" class="badge bg-info rounded-pill" style="height: 20px;"><span>Key Item Required</span></div>
-                <div *ngIf="recip.Desynth != 0" class="fw-normal badge bg-secondary rounded-pill" style="height: 20px;">Desynth</div>
+                <div *ngIf="recip.KeyItem" class="badge bg-secondary rounded-pill my-1" style="height: 20px;"><span>Key Item Req: <a href="">{{recip.KeyItem | titlecase}}</a></span></div>
+                <div *ngIf="recip.Desynth != 0" class="fw-normal badge bg-info rounded-pill my-1" style="height: 20px;">Desynth</div>
             </div>
             <div class="fs-6 fw-bold">
                 <span>Crystal:</span>

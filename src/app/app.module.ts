@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './user-views/home/home.component';
 import { FormsModule } from '@angular/forms';
-//import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({

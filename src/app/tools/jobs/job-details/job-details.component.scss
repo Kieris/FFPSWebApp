@@ -1,7 +1,7 @@
 @import '../../../../assets/theme/theme.scss';
 @import '../../../../assets/theme/functions.scss';
 
-.list-group-item, .accordion-item, .accordion-button {
+.list-group-item, .accordion-item, .accordion-button, .pup-sk-box {
     background-color: var(--cardBackground)!important;;
     color: var(--cardColor)!important;  
     border: 1px solid var(--border-color) !important; 

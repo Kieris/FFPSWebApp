@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ToolsRoutingModule } from './tools-routing.module';
-import { AHCatPipe, CraftPipe, DropTypePipe, ElementPipe, JobsPipe, JobsStringPipe, RacePipe, RomanPipe, RSlotPipe, Safe, SCPipe, SkillTypePipe, SlotPipe, SpawnPipe, SpellElementPipe, TargetPipe, ToolsComponent, SpellPipe, ZoneTypePipe, MobTypePipe, DetectTypePipe, AddTypePipe } from './tools.component';
+import { AHCatPipe, CraftPipe, DropTypePipe, ElementPipe, JobsPipe, JobsStringPipe, RacePipe, RomanPipe, RSlotPipe, Safe, SCPipe, SkillTypePipe, SlotPipe, SpawnPipe, SpellElementPipe, TargetPipe, ToolsComponent, SpellPipe, ZoneTypePipe, MobTypePipe, DetectTypePipe, AddTypePipe, TimePipe } from './tools.component';
 import { MobDataComponent } from './mob-data/mob-data.component';
 import { CharDataComponent } from './char-data/char-data.component';
 import { AhComponent } from './ah/ah.component';
@@ -25,6 +25,13 @@ import { SkillchainComponent } from './ws/skillchain/skillchain.component';
 import { CraftingDetailsComponent } from './crafting/crafting-details/crafting-details.component';
 import { SkillchainListComponent } from './ws/skillchain-list/skillchain-list.component';
 import { MiscDetailsComponent } from './misc-details/misc-details.component';
+import { AttachmentsComponent } from './misc-details/attachments/attachments.component';
+import { BcnmComponent } from './bcnm/bcnm.component';
+import { BcnmDetailsComponent } from './bcnm/bcnm-details/bcnm-details.component';
+import { ItemIconComponent } from '../core/item-icon/item-icon.component';
+import { TutorialsComponent } from './tutorials/tutorials.component';
+import { MissionsComponent } from './missions/missions.component';
+import { QuestsComponent } from './quests/quests.component';
 
 
 @NgModule({
@@ -41,6 +48,7 @@ import { MiscDetailsComponent } from './misc-details/misc-details.component';
     SpawnPipe,
     SkillTypePipe,
     SpellElementPipe,
+    TimePipe,
     CraftPipe,
     JobsPipe,
     JobsStringPipe,
@@ -71,7 +79,14 @@ import { MiscDetailsComponent } from './misc-details/misc-details.component';
     SkillchainComponent,
     CraftingDetailsComponent,
     SkillchainListComponent,
-    MiscDetailsComponent
+    MiscDetailsComponent,
+    AttachmentsComponent,
+    BcnmComponent,
+    BcnmDetailsComponent,
+    ItemIconComponent,
+    TutorialsComponent,
+    MissionsComponent,
+    QuestsComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
 <div *ngIf="traits && traits[0]" class="d-flex">
   <img class="me-2" [src]='"../../../assets/imgs/jobs/"+traits[0].Job+".png"' width="32" height="32"><h3>{{traits[0].Job | jobs}}</h3>
 </div>
@@ -13,13 +13,14 @@
           <div class="accordion-body">
             <div class="list-group">
                 <div *ngFor="let trait of traits">
-                    <div *ngIf="trait.ContentTag !== 'ABYSSEA' && trait.ContentTag !== 'ROV' && trait.Level < 76" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div *ngIf="trait.ContentTag !== 'ABYSSEA' && trait.ContentTag !== 'ROV' && trait.Level < 76" class="list-group-item d-flex justify-content-between flex-wrap align-items-start">
                         <div class="ms-2 me-auto">
                         <div class="fw-bold">{{trait.Name | titlecase}} {{trait.Rank | roman}}</div>
-                        Level: {{trait.Level}}
-                        <div>{{trait.Mod?.Str}}</div>
+                        <div class="small">Level: {{trait.Level}}</div>
+                        <div *ngIf="trait.Note" class="small mb-1">{{trait.Note}}</div>
+                        <div class="small text-muted">{{trait.Mod?.Str}}</div>
                       </div>
-                      <span *ngIf="trait.MeritID !== 0" class="badge bg-info rounded-pill">MERIT OBTAINED</span>
+                      <span *ngIf="trait.MeritID !== 0" class="ms-2 my-2 badge bg-info rounded-pill">MERIT OBTAINED</span>
                     </div>
                 </div>
             </div>
@@ -38,14 +39,17 @@
             <div class="list-group">
                 <div *ngFor="let ab of abilities">
                     <div *ngIf="ab.ContentTag !== 'ABYSSEA' && ab.ContentTag !== 'ROV' && ab.Level < 76 && ab.ValidTarget != 257" class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-start">
+                    <div class="d-flex justify-content-between flex-wrap align-items-start">
                         <div class="ms-2 me-auto">
                         <a [routerLink]="['/tools/jobs/abilities', ab.Name]" class="fw-bold">{{ab.Name | removeUnderscore}}</a>
             
-                        <div>Level: {{ab.Level}}</div>
+                        <div class="small">Level: {{ab.Level}}</div>
+                        <div *ngIf="ab.Note" class="small mb-1">{{ab.Note}}</div>
+
+
                       </div>
-                      <span *ngIf="ab.MeritModID !== 0 && ab.Level == 75" class="badge bg-info rounded-pill">MERIT OBTAINED</span>
-                      <span *ngIf="ab.MeritModID !== 0 && ab.Level < 75" class="badge bg-info rounded-pill">MERIT IMPROVED</span>
+                      <span *ngIf="ab.MeritModID !== 0 && ab.Level == 75" class="ms-2 my-2 badge bg-info rounded-pill">MERIT OBTAINED</span>
+                      <span *ngIf="ab.MeritModID !== 0 && ab.Level < 75" class="ms-2 my-2 badge bg-info rounded-pill">MERIT IMPROVED</span>
             
                     </div>
                     <div class="row ms-2">
@@ -75,7 +79,7 @@
       <div *ngIf="skillRanks" class="accordion-item">
         <h2 class="accordion-header" id="heading3">
                 <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                    Skill Ranks
+                    Skill Caps
                   </button>        
         </h2>
         <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionJobs">
@@ -128,7 +132,8 @@
                           <a *ngIf="spell.Skill == 43" [routerLink]="['/tools/jobs', 'spells/bluemagic', spell.Name]">{{spell.Name | spell}}</a>
                           <div><img [src]='"../../../../assets/imgs/"+getElem(spell.Element)+".png"' width="16" height="16"></div></div> 
                         
-                        Level: {{spell.Level}}
+                        <div class="small">Level: {{spell.Level}}</div>
+                        <div *ngIf="spell.Note" class="small mb-1">{{spell.Note}}</div>
                       </div>
                      <!--<span *ngIf="trait.MeritID !== 0" class="badge bg-info rounded-pill">MERIT OBTAINED</span>-->
                     </div>
@@ -225,57 +230,120 @@
       <div *ngIf="automatonFrames" class="accordion-item">
         <h2 class="accordion-header" id="heading8">
           <button class="accordion-button collapsed fw-light fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-            Automaton Heads and Frames
+            Automaton Parts and Skills
           </button>
         </h2>
         <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionJobs">
           <div class="accordion-body">
-            <div class="btn-group">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Small button
-              </button>
-              <ul class="dropdown-menu">
-                ...
-              </ul>
-            </div>
-            <div class="btn-group">
-              <button class="btn btn-secondary btn-sm" type="button">
-                Small split button
-              </button>
-              <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu">
-                ...
-              </ul>
-            </div>
-            <div class="d-flex justify-content-start">
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Head
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
-                  <div *ngFor="let frame of automatonFrames">
-                    <li *ngIf="frame.Slot == 0"><a class="dropdown-item" href="#">{{frame.Name}}</a></li>
-                  </div>
-                 
-                </ul>
+            <div class="text-center"><div class="fs-5 fw-light mt-2 mb-3">Skill Caps for Level</div></div>
+            <div class="d-flex justify-content-start flex-wrap pup-sk-box rounded px-2 mb-3 shadow">
+              <div class="p-2 ps-0 d-flex  flex-grow-1  align-items-center">
+                <h6 class="px-2 pb-2 pt-3">Head </h6>
+                <select class="form-select form-select-sm" [(ngModel)]="searchPupHe" aria-label=".form-select-sm">
+                    <option *ngFor="let frame of heads" [value]="frame.ItemId">{{frame.Name | spell}}</option>                  
+                </select>
               </div>
+              <div class="p-2 ps-0 d-flex  flex-grow-1 align-items-center">
+                <h6 class="px-2 pb-2 pt-3">Frame </h6>
+                <select class="form-select form-select-sm" [(ngModel)]="searchPupFr" aria-label=".form-select-sm">
+                    <option *ngFor="let frame of frames" [value]="frame.ItemId">{{frame.Name | spell}}</option>                  
+                </select>
+              </div>
+              <div class="input-group input-group-sm mb-3 px-2">
+                <span class="input-group-text" id="basic-title">{{searchPupVal}}</span>
+              <input class="form-range form-control form-control-sm" type="range" min="1" max="75" aria-label=".form-control-sm" 
+              [(ngModel)]="searchPupVal" (keyup.enter)="searchPupClick()" aria-describedby="basic-title">
+              <button class="btn btn-sm bg-info" (click)="searchPupClick()">Update</button>
+              </div>
+              <div class="list-group pb-2 w-100">
+              <div class="flex-grow-1 d-flex justify-content-start flex-wrap">
+                <div class="list-group-item d-flex flex-grow-1 justify-content-between align-items-start rounded">
+                  <div class="ms-2 me-auto">
+                  <div class="fw-bold">
+                      <div style="padding-top: 6px;">
+                          <span>Melee Skill</span>
+                      </div>
+                 </div>
+                </div>
+                <span class="text-muted fs-lighter"><span class="fs-4">{{pupSkills?.Melee.Value}}</span></span>
+              </div>
+                    <div class="list-group-item d-flex flex-grow-1 justify-content-between align-items-start rounded">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <div style="padding-top: 6px;">
+                                <span>Magic Skill</span>
+                            </div>
+                       </div>
+                      </div>
+                      <span class="text-muted fs-lighter"><span class="fs-4">{{pupSkills?.Magic.Value}}</span></span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between flex-grow-1 align-items-start rounded">
+                      <div class="ms-2 me-auto">
+                      <div class="fw-bold">
+                          <div style="padding-top: 6px;">
+                              <span>Ranged Skill</span>
+                          </div>
+                     </div>
+                    </div>
+                    <span class="text-muted fs-lighter"><span class="fs-4">{{pupSkills?.Ranged.Value}}</span></span>
+                  </div>
+                  </div>
+
             </div>
-            <div class="list-group">
+            </div>
+            <div class="text-center"><div class="fs-5 fw-light pb-3">Heads and Frames</div></div>
+            <div class="list-group shadow">
                 <div *ngFor="let frame of automatonFrames">
                     <div class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="d-flex justify-content-left flex-grow-1">
+                      <div class="d-flex justify-content-left flex-grow-1 flex-wrap">
                         <div class="d-flex align-items-top justify-content-center pb-3 pe-2" style="width: 54px; padding-top: 8px; padding-left: 6px;">
                             <img [src]='"https://www.ffxiah.com/images/icon/"+frame?.ItemId+".png"'>
                         </div>
                         <div class="d-flex flex-column flex-grow-1 p-1">
                            <a [routerLink]="['/tools/items', frame.ItemId]">{{frame?.Name | spell}}</a>
+                           <!--<div class="small">{{frame?.Note}}</div>-->
+                        </div>
+                        <div class="d-flex flex-col">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/fire.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Fire}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/ice.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Ice}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/wind.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Wind}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/earth.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Earth}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/lightning.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Lightning}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/water.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Water}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/light.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Light}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                              <img src="../../../../assets/imgs/dark.png" width="16" height="16">
+                              <span class="px-2">{{frame?.ElemTot?.Dark}}</span>
+                            </div>
+                          </div>
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-3"><a class="fs-5 fw-light pb-3" [routerLink]="['/tools/jobs/pup/attachments']">See Attachments</a></div>
         </div>
         </div>
       </div>
@@ -287,7 +355,7 @@
         </h2>
         <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionJobs">
           <div class="accordion-body">
-            <div class="list-group">
+            <div class="list-group shadow">
                 <div *ngFor="let spell of automatonSpells">
                     <div class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">

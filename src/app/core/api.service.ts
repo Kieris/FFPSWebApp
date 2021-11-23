@@ -214,6 +214,22 @@ export class ApiService {
     return this.http.get(environment.API + "pup/frames");
   }
 
+  public sendGetBcnms(){
+    return this.http.get(environment.API + "bcnms");
+  }
+
+  public sendGetBcnmDets(id: number){
+    return this.http.get(environment.API + "bcnms/" + id);
+  }
+
+  public sendGetPupAttach(){
+    return this.http.get(environment.API + "pup/attach");
+  }
+
+  public sendGetPupSkills(head: number, frame: number, level: number){
+    return this.http.get(environment.API + "pup/skillcap/" + head + "/" + frame + "/" + level);
+  }
+
   public sendGetPetsByJob(id: number){
     return this.http.get(environment.API + "pets/job/" + id);
   }

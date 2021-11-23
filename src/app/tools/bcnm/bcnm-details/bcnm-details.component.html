@@ -1,0 +1,53 @@
+<div class="container">
+    <h3 class="my-3">{{bc?.Name | spell}}</h3>
+<div *ngIf="bc">
+<div class="list-group-item d-flex justify-content-between">
+    <div class="ms-2 me-auto">
+            <a class="fw-light" [routerLink]="['/tools/zones', bc.ZName, bc.ZoneId]">Zone: {{bc.ZName | removeUnderscore}}</a>           
+            <div class="small text-muted">Time Limit: <span class="text-muted">{{bc.Limit | time}}</span></div>
+            <div class="small text-muted">Party Size: <span class="text-muted">{{bc.PtSize}}</span></div>
+            <div class="small text-muted">Rules: <span class="text-muted">{{bc.RuleStr}}</span></div>
+
+      </div>
+      <div>
+      <div>Level Cap: {{bc.Cap}}</div>
+      <div *ngIf="bc.IsMish != 0" class="badge bg-secondary rounded-pill my-3 text-wrap">Mission</div>
+      <div *ngIf="bc.LootID != 0" class="badge bg-info rounded-pill my-3 text-wrap">Loot</div>
+
+    </div>
+</div>
+<h4 class="my-3">Mobs</h4>
+
+<div *ngIf="bc.Mobs" class="list-group">
+    <div *ngFor="let mob of bc.Mobs" class="list-group-item d-flex justify-content-between">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">   
+                <a [routerLink]="['/tools/mob', mob.Group, bc.ZoneId, 1]">{{mob.Name | spell}}</a>
+            </div>           
+                <div class="small text-muted">Conditions: <span class="text-muted">{{mob.Conditions}}</span></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="bc.Treasure?.length > 0">
+    <h4 class="my-3">Loot</h4>
+<div class="list-group">
+    <div *ngFor="let npc of bc.Treasure" class="px-3">
+        <h5>Armoury Crate</h5>
+    <div *ngFor="let group of npc.Loot" class="p-3">
+        <h6>Group: {{group.Group}}</h6>
+        <div *ngFor="let drop of group.BCTreasure" class="py-2 list-group-item d-flex justify-content-between">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">   
+                <a [routerLink]="['/tools/items', drop.ItemId]">{{drop.Name | spell}}</a>
+            </div>           
+                <div class="small text-muted">Rate: <span class="text-muted">{{drop.Rate}}</span></div>
+        </div>
+        <div class="px-1 fs-6 my-3" style="height: 27px;">{{drop.Rate/ getTotalRate(group) *100 | number: '1.0-2'}}%</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>

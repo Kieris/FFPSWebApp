@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/core/api.service';
   styleUrls: ['./fishing.component.scss']
 })
 export class FishingComponent implements OnInit {
-  searchVal1: number = 1;
+  searchVal1: number = 0;
   seaItems;
 
   min = "min_skill_level";
@@ -28,9 +28,15 @@ export class FishingComponent implements OnInit {
   }
 
   searchClick() {
-      this.ds.sendGetFishByLevel(this.max, this.searchVal1, this.searchVal1 + 5, this.includeItems).subscribe((skill:any) => {
+    if(this.searchVal1 > 95) {
+      this.ds.sendGetFishByLevel(this.max, this.searchVal1, this.searchVal1 + 50, this.includeItems).toPromise().then((skill:any) => {
         this.seaItems = skill;
       });
+    } else {
+      this.ds.sendGetFishByLevel(this.max, this.searchVal1, this.searchVal1 + 5, this.includeItems).toPromise().then((skill:any) => {
+        this.seaItems = skill;
+      });
+    }
   }
 
   itemsClick() {

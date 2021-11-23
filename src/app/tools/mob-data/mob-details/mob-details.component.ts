@@ -1,5 +1,7 @@
+import { formatPercent } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { stringify } from 'querystring';
 import { ApiService } from 'src/app/core/api.service';
 
 @Component({
@@ -35,6 +37,16 @@ export class MobDetailsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  getTotalForGroup(rate: number, grp: number, drops) {
+      var sum = 0;
+      drops.forEach(x => {
+        if(x.GroupId == grp) {
+          sum += x.ItemRate
+        }
+      });    
+      return rate/sum * 100
   }
 
 }

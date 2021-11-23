@@ -1,7 +1,8 @@
 <div *ngIf="item?.Name" class="container">
 <div><h3>{{item.Name | removeUnderscore}}</h3></div>
 <div class="row mx-0">
-<ul class="list-group col" style="max-width: 320px;">
+<div class="col-md-4 col-sm-12 p-0 m-0">
+  <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Type</div>
@@ -107,9 +108,22 @@
         <span *ngIf="item.Charmable == 0">No</span>
       </li>
   </ul>
-<div class="col" style="max-width: 150px; border-radius: 5px;">
-
-<table class="table table-sm table-bordered border-muted card-bg" >
+  <div *ngIf="item?.Modifs" class="my-3">
+    <h5>Modifiers</h5>
+    <div class="list-group">
+      <div *ngFor="let mod of item?.Modifs">
+        <div *ngIf="mod.Str" class="list-group-item"><em>{{mod.Str}}</em></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="col smt p-0 m-0 mb-3">
+    <!--<div class="p-3">
+      <img class="mob-box" src="../../../../assets/imgs/fafnir.png">
+    </div>-->
+    <div class="d-flex">
+<div class="small-pad">
+<table class="table table-sm table-bordered border-muted card-bg p-0 m-0" >
     <thead>
         <tr class="bg-light text-dark">
           <th colspan="2" class="text-center">Attributes</th>
@@ -167,9 +181,8 @@
     </tbody>
 </table>
 </div>
-<div class="col" style="max-width: 200px; border-radius: 5px;">
-
-    <table class="table table-sm table-bordered border-muted card-bg" >
+<div class="flex-grow-1" style="min-width: 180px;">
+    <table class="table table-sm table-bordered border-muted card-bg p-0 m-0" >
         <thead>
             <tr class="bg-light text-dark">
               <th colspan="2" class="text-center">Resistance</th>
@@ -227,13 +240,7 @@
         </tbody>
     </table>
     </div>
-</div>
-<div *ngIf="item?.Modifs" class="mt-3">
-  <h4>Modifiers</h4>
-  <div class="list-group">
-    <div *ngFor="let mod of item?.Modifs">
-      <div *ngIf="mod.Str" class="list-group-item"><em>{{mod.Str}}</em></div>
-    </div>
+  </div>
   </div>
 </div>
 <div class="accordion mt-3" id="skillsAccordion">
@@ -348,21 +355,20 @@
       </h2>
       <div id="flush-dropsCollapse" class="accordion-collapse show collapse" aria-labelledby="flush-headingThree" data-bs-parent="#skillsAccordion">
         <div class="accordion-body">
-            <div>
+            <div class="drop-big">
                 <table class="table table-bordered ah-table">
                     <thead>
                         <tr>
                           <th colspan="2" class="text-center">Item Name</th>
                           <th class="text-center">Type</th>
                           <th class="text-center">Grp ID</th>
-                          <th class="text-center">Grp Rate</th>
-                          <th class="text-center">Rate</th>
+                          <th class="text-center">Drop Chance</th>
                         </tr>
                       </thead>
                     <tbody>
                         <tr *ngFor="let drop of item.Drops">
                             <td class="text-center">
-                                <img [src]='"https://www.ffxiah.com/images/icon/"+drop.ItemId+".png"' width="32" height="32">
+                              <app-item-icon [Val]="drop?.ItemId" Eq="false"></app-item-icon>
                             </td>
                             <td>
                                 <a [routerLink]="['/tools/items', drop.ItemId]">{{drop.ItemName | spell}}</a>
@@ -374,15 +380,35 @@
                                 {{drop.GroupId}}
                             </td>
                             <td class="text-center">
-                                {{drop.GroupRate /10}}
-                            </td>
-                            <td class="text-center">
-                                {{drop.ItemRate /10}}
+                                {{drop.ItemRate/10}}%
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="drop-small">
+              <div class="list-group">
+                      <div *ngFor="let drop of item.Drops" class="list-group-item d-flex justify-content-between">
+                          <div>
+                          <div>
+                              <a [routerLink]="['/tools/items', drop.ItemId]">{{drop.ItemName | spell}}</a>
+                          </div>
+                          <div class="ps-3 small">
+                              Type: {{drop.DropType | droptype}}
+                          </div>
+                          <div class="ps-3 small">
+                              Group: {{drop.GroupId}}
+                          </div>
+                          <div class="ps-3 small">
+                              Drop Chance: {{drop.ItemRate/10}}%
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <app-item-icon [Val]="drop?.ItemId" Eq="false"></app-item-icon>
+                        </div>
+                      </div>
+              </div>
+          </div>
         </div>
       </div>
     </div>

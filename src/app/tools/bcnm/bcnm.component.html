@@ -1,0 +1,32 @@
+<div class="container">
+    <h3 class="py-3">BCNMs</h3>
+    <div class="input-group mb-2 mt-3">
+        <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (ngModelChange)="onSearchTextChange()" aria-label="Search input">        
+      </div>
+      <div *ngIf="searchVal && filteredBCNMs?.length == 0" class="alert d-flex align-items-center alert-info" role="alert">
+        <i class="bi bi-exclamation-diamond me-2"></i>
+        <div>
+          No results found
+        </div>
+        </div>
+    <div class="list-group">
+        <a *ngFor="let bc of filteredBCNMs" [routerLink]="['/tools/bcnm', bc.ID]" class="list-group-item d-flex justify-content-between">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">   
+                    <div>{{bc.Name | spell}}</div>
+                </div>
+                    <a class="fw-light" [routerLink]="['/tools/zones', bc.ZName, bc.ZoneId]">{{bc.ZName | removeUnderscore}}</a>           
+                    <div class="small text-muted">Time Limit: <span class="text-muted">{{bc.Limit | time}}</span></div>
+                    <div class="small text-muted">Party Size: <span class="text-muted">{{bc.PtSize}}</span></div>
+                    <div class="small text-muted">Rules: <span class="text-muted">{{bc.RuleStr}}</span></div>
+
+              </div>
+              <div>
+              <div>Level Cap: {{bc.Cap}}</div>
+              <div *ngIf="bc.IsMish != 0" class="badge bg-secondary rounded-pill my-3 text-wrap">Mission</div>
+              <div *ngIf="bc.LootID != 0" class="badge bg-info rounded-pill my-3 text-wrap">Loot</div>
+
+            </div>
+        </a>
+    </div>
+</div>
