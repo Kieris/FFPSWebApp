@@ -1,6 +1,8 @@
 # FFPSWebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+This is an Angular frontend for a website that interacts with the MariaDB database used for private FFXI servers to show stats similar to that of a Wiki, but the data is automatic and are guaranteed to be accurate. The original database used was based on the Wings version, but they have made several updates since I made this and I need to update some API queries. I also need to see if calculations (not many of these were needed but future features could change that) have changed for certain things in the newer Wings code. After I update the Go API, I intend to eventually set up a demo site to show this.  
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3 and later updated to Angular 13.
 
 ## Development server
 
