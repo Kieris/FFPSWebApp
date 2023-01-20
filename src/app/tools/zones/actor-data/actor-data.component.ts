@@ -16,7 +16,7 @@ export class ActorDataComponent implements OnInit {
         route.params.subscribe(val => {
           this.zoneId = val.id;
           this.actorId = val.aid;
-          this.ds.sendGetZoneActorEvents(this.zoneId, this.actorId).subscribe((data: any[])=>{
+          this.ds.sendGetZoneActorEvents(this.zoneId, this.actorId).toPromise().then((data: any[])=>{
             this.zoneEvents = data;
           });
         });

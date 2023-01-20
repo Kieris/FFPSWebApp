@@ -33,7 +33,7 @@ export class MobDataComponent implements OnInit {
     } else {
       this.alertMessage = '';
       if (this.searchVal && this.searchVal.length < maxChar) {
-        this.dataService.sendGetMob(this.searchVal).subscribe((data: any[])=>{
+        this.dataService.sendGetMob(this.searchVal).toPromise().then((data: any[])=>{
           this.data = data;
           if(!data) {
             this.error = false;

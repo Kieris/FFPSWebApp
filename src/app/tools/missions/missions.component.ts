@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../core/api.service';
 
 @Component({
   selector: 'app-missions',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./missions.component.scss']
 })
 export class MissionsComponent implements OnInit {
-
-  constructor() { }
+  missions;
+  constructor(private ds: ApiService) {
+    this.ds.sendGetMissions().toPromise().then(data => {
+      this.missions = data;
+    })
+   }
 
   ngOnInit(): void {
   }

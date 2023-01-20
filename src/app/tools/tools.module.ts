@@ -32,6 +32,11 @@ import { ItemIconComponent } from '../core/item-icon/item-icon.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
 import { MissionsComponent } from './missions/missions.component';
 import { QuestsComponent } from './quests/quests.component';
+import { CatMissionsComponent } from './missions/cat-missions/cat-missions.component';
+import { CatMissionComponent } from './missions/cat-mission/cat-mission.component';
+import { MapViewerComponent } from './zones/map-viewer/map-viewer.component';
+import { PetDetailsComponent } from './misc-details/pet-details/pet-details.component';
+import { TutDetsComponent } from './tutorials/tut-dets/tut-dets.component';
 
 
 @NgModule({
@@ -86,7 +91,12 @@ import { QuestsComponent } from './quests/quests.component';
     ItemIconComponent,
     TutorialsComponent,
     MissionsComponent,
-    QuestsComponent
+    QuestsComponent,
+    CatMissionsComponent,
+    CatMissionComponent,
+    MapViewerComponent,
+    PetDetailsComponent,
+    TutDetsComponent
   ],
   imports: [
     CommonModule,

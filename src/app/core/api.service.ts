@@ -142,6 +142,10 @@ export class ApiService {
     return this.http.get(environment.API + "zones/mobs/" + id);
   }
 
+  public sendGetMapPaths(id: number){
+    return this.http.get(environment.API + "mappaths/" + id);
+  }
+
   public sendGetZoneActorEvents(zoneId: number, actorId: number) {
     return this.http.get(environment.API + "events/zones/" + zoneId + "/" + actorId);
   }
@@ -156,6 +160,10 @@ export class ApiService {
 
   public sendGetMobDet(id: number, zid: number, pid: number){
     return this.http.get(environment.API + "mobs/moblong/" + id + "/" + zid+ "/" + pid);
+  }
+
+  public sendGetPetDet(id: number){
+    return this.http.get(environment.API + "pets/dets/" + id);
   }
 
   public sendGetFishMob(id: string, zid: number){
@@ -212,6 +220,26 @@ export class ApiService {
 
   public sendGetPupFrames(){
     return this.http.get(environment.API + "pup/frames");
+  }
+
+  public sendGetTuts(){
+    return this.http.get(environment.API + "tuts");
+  }
+
+  public sendGetMissions(){
+    return this.http.get(environment.API + "missions");
+  }
+
+  public sendGetCatMissions(id){
+    return this.http.get(environment.API + "missions/" + id);
+  }
+
+  public sendGetAssaults(){
+    return this.http.get(environment.API + "assaults");
+  }
+
+  public sendGetCatMission(id, index){
+    return this.http.get(environment.API + "missions/" + id + "/" + index);
   }
 
   public sendGetBcnms(){

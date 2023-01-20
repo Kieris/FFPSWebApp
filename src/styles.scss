@@ -1,5 +1,7 @@
-
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+$primary: rgba(38, 45, 87); //Change bootstrap primary color before import
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
 @font-face {
     font-family: ffxf;
     src: url(./assets/font/ffxifont) format("opentype");

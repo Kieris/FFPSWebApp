@@ -3,7 +3,7 @@
 <div class="input-group mb-2 mt-3">
   <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-label="Search input">
   <div class="input-group-append">
-      <button class="btn btn-primary" type="button" (click)="searchClick()">Search</button>
+      <button class="btn bg-ff" type="button" (click)="searchClick()">Search</button>
   </div>
   
 </div>
@@ -39,7 +39,7 @@
     <div>
       <div class="d-flex flex-wrap">
         <div *ngIf="facePath" class="jobs-box d-flex justify-content-center flex-grow-1">
-          <img src="../../../assets/imgs/m_F2B_homam.png">
+          <img src="../../../assets/imgs/tm_f4a_homam.png" height="314" width="260">
 
         <!-- <img class="rounded" [src]="facePath" width="120" height="128">-->
         </div>
@@ -59,28 +59,28 @@
       </div>
         <div>
             <div class="d-flex">
-              <app-item-icon [Val]="equip[0]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[1]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[2]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[3]" Eq="2"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[0]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[0] | removeUnderscore}}" [routerLink]="['/tools/items', equip[0]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[1]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[1] | removeUnderscore}}" [routerLink]="['/tools/items', equip[1]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[2]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[2] | removeUnderscore}}" [routerLink]="['/tools/items', equip[2]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[3]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[3] | removeUnderscore}}" [routerLink]="['/tools/items', equip[3]]"></app-item-icon>
             </div>
             <div class="d-flex">
-              <app-item-icon [Val]="equip[4]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[9]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[11]" Eq="2"></app-item-icon>
-              <app-item-icon [Val]="equip[12]" Eq="2"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[4]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[4] | removeUnderscore}}" [routerLink]="['/tools/items', equip[4]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[9]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[9] | removeUnderscore}}" [routerLink]="['/tools/items', equip[9]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[11]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[11] | removeUnderscore}}" [routerLink]="['/tools/items', equip[11]]"></app-item-icon>
+              <app-item-icon type="button" [Val]="equip[12]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[12] | removeUnderscore}}" [routerLink]="['/tools/items', equip[12]]"></app-item-icon>
                 </div>
                 <div class="d-flex">
-                  <app-item-icon [Val]="equip[5]" Eq="2"></app-item-icon>
-                  <app-item-icon [Val]="equip[6]" Eq="2"></app-item-icon>
-                  <app-item-icon [Val]="equip[13]" Eq="2"></app-item-icon>
-                  <app-item-icon [Val]="equip[14]" Eq="2"></app-item-icon>
+                  <app-item-icon type="button" [Val]="equip[5]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[5] | removeUnderscore}}" [routerLink]="['/tools/items', equip[5]]"></app-item-icon>
+                  <app-item-icon type="button" [Val]="equip[6]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[6] | removeUnderscore}}" [routerLink]="['/tools/items', equip[6]]"></app-item-icon>
+                  <app-item-icon type="button" [Val]="equip[13]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[13] | removeUnderscore}}" [routerLink]="['/tools/items', equip[13]]"></app-item-icon>
+                  <app-item-icon type="button" [Val]="equip[14]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[14] | removeUnderscore}}" [routerLink]="['/tools/items', equip[14]]"></app-item-icon>
                     </div>
                     <div class="d-flex">
-                      <app-item-icon [Val]="equip[15]" Eq="2"></app-item-icon>
-                      <app-item-icon [Val]="equip[10]" Eq="2"></app-item-icon>
-                      <app-item-icon [Val]="equip[7]" Eq="2"></app-item-icon>
-                      <app-item-icon [Val]="equip[8]" Eq="2"></app-item-icon>
+                      <app-item-icon type="button" [Val]="equip[15]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[15] | removeUnderscore}}" [routerLink]="['/tools/items', equip[15]]"></app-item-icon>
+                      <app-item-icon type="button" [Val]="equip[10]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[10] | removeUnderscore}}" [routerLink]="['/tools/items', equip[10]]"></app-item-icon>
+                      <app-item-icon type="button" [Val]="equip[7]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[7] | removeUnderscore}}" [routerLink]="['/tools/items', equip[7]]"></app-item-icon>
+                      <app-item-icon type="button" [Val]="equip[8]" Eq="2" data-bs-toggle="tooltip" title="{{equipName[8] | removeUnderscore}}" [routerLink]="['/tools/items', equip[8]]"></app-item-icon>
                         </div>
                     </div>
 

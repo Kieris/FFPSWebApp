@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'tools', loadChildren: () => import('./tools/tools.module').then(m => m.ToolsModule)
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full'}
+  { path: '', redirectTo: 'tools', pathMatch: 'full'}
 ];
 
 @NgModule({

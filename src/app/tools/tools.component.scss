@@ -16,13 +16,14 @@
   font-size: 1.1rem;
 }
   .menu {
-    width: 240px;
+    width: 245px;
   }
 
   .nav-top {
       display: none;
       background-color: $ff-bg-color !important; 
   }
+
 
   .logo {
     font-family: ffxf;
@@ -33,6 +34,29 @@
     width: 100%;
     text-align: justify;
   }
+  /* Item will lose style when focus lost if not using !important for routeActive */
+  .act-bg {
+    z-index: 1 !important;
+    background-color: rgba(49, 59, 114, 0.9) !important;
+    background: repeating-linear-gradient(0deg, #313b72, #313b72 1px, rgba(49, 59, 114, 0.8) 0px, rgba(49, 59, 114, 0.8) 1px) !important;
+    color: white !important;
+    border: 6px solid var(--border-color) !important;
+    border-image: url("../../assets/imgs/border.png") 6 !important;
+    border-image-outset: 0 !important;
+    border-image-repeat:stretch !important;
+  }
+
+  ul.nav a:hover, ul.nav a:focus, ul.nav a:active, ul.li a:hover, ul.li a:focus { 
+    z-index: 1;
+    background-color: rgba(49, 59, 114, 0.9);
+    background: repeating-linear-gradient(0deg, #313b72, #313b72 1px, rgba(49, 59, 114, 0.8) 0px, rgba(49, 59, 114, 0.8) 1px);
+    color: white !important;
+    border: 6px solid var(--border-color);
+    border-image: url("../../assets/imgs/border.png") 6;
+    border-image-outset: 0;
+    border-image-repeat:stretch;
+  }
+
 
   @media (max-width: 668px) {
     .menu {

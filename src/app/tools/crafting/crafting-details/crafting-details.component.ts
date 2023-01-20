@@ -25,7 +25,7 @@ export class CraftingDetailsComponent implements OnInit {
   }
 
   searchClick() {
-      this.ds.sendGetCraftRecipes(this.id, this.searchVal1, this.searchVal1 + 5).subscribe((skill:any) => {
+      this.ds.sendGetCraftRecipes(this.id, this.searchVal1, this.searchVal1 + 5).toPromise().then((skill:any) => {
         this.seaItems = skill;
       });
   }

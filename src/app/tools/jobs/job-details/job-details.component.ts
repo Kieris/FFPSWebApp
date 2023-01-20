@@ -13,7 +13,7 @@ traits;
 abilities;
 spells;
 merits;
-skillRanks = [];
+skillRanks;
 af;
 pets;
 automatonSpells;
@@ -25,57 +25,24 @@ searchVal: number = 75;
 searchPupVal: number = 75;
 searchPupFr;
 searchPupHe;
+spellVis = false;
+pupVis = false;
 
 
   constructor(private route: ActivatedRoute, private ds: ApiService) {
     if (route.params) {
       route.params.subscribe(val => {
-        this.id = val.id;
-        this.ds.sendGetTraitsByJob(this.id).subscribe((data: any[])=>{
-          this.traits = data;
-        });
-        this.ds.sendGetAbilitiesByJob(this.id).subscribe((data: any[])=>{
-          this.abilities = data;
-        });
-        this.ds.sendGetPetsByJob(this.id).subscribe((data: any[])=>{
-          this.pets = data;
-        });
-        this.ds.sendGetMeritsByJob(this.id).subscribe((data: any[])=>{
-          this.merits = data;
-        });
+        this.id = Number(val.id);
         if (this.id == 18) {
-          this.ds.sendGetPupSpells().subscribe((data: any[])=>{
-            this.automatonSpells = data;
-          });
-          this.ds.sendGetPupFrames().subscribe((data: any[])=>{
-            this.automatonFrames = data;
-            if (this.automatonFrames) {
-              this.heads = this.automatonFrames.filter(item => item.Slot == 1);
-              this.frames = this.automatonFrames.filter(item => item.Slot == 2);
-              this.searchPupFr = this.frames[0].ItemId;
-              this.searchPupHe = this.heads[0].ItemId;
-              this.searchPupClick();
-            }
-          });
+          this.pupVis = true;
+        } else if(this.hasSpells() > 0) {
+          this.spellVis = true;
+        } else {
+          this.pupVis = false;
+          this.spells = false;
         }
-        this.ds.sendGetSkillRanksByJob(this.id).subscribe((data: any[])=>{
-          this.skillRanks = [];
-          data.forEach(item => {
-            if (item.Value !== 0) {
-            this.getMaxLevel(this.searchVal, item.Value).then((skill:any) => {
-              this.skillRanks.push({
-                ...item,
-                lVal: skill[0].Value 
-              });
-            });
-            }
-          });
-        });
-        this.ds.sendGetSpellsByJob(this.id).subscribe((data: any[])=>{
-          this.spells = data;
-        });
-        this.ds.sendGetAFByJob(this.id).subscribe((data: any[])=>{
-          this.af = data;
+        this.ds.sendGetPetsByJob(this.id).toPromise().then((data: any[])=>{
+          this.pets = data;
         });
       });
     }
@@ -115,5 +82,116 @@ searchPupHe;
       case 8: return "dark";      
       default: return value;
     }
+  }
+
+  traitsClick() {
+    if(!this.traits) {
+      this.ds.sendGetTraitsByJob(this.id).toPromise().then((data: any[])=>{
+        this.traits = data;
+      });
+    }
+  }
+
+  absClick(){
+    if(!this.abilities) {
+      this.ds.sendGetAbilitiesByJob(this.id).toPromise().then((data: any[])=>{
+        this.abilities = data;
+      });
+    }
+  }
+
+  meritClick() {
+    if(!this.merits) {
+      this.ds.sendGetMeritsByJob(this.id).toPromise().then((data: any[])=>{
+        this.merits = data;
+      });
+    }
+  }
+
+  pupClickSpells() {
+    if (!this.automatonSpells) {
+      this.ds.sendGetPupSpells().toPromise().then((data: any[])=>{
+        this.automatonSpells = data;
+      });
+    }
+  }
+
+  pupClickFrames(){
+    if(!this.automatonFrames) {
+      this.ds.sendGetPupFrames().toPromise().then((data: any[])=>{
+        this.automatonFrames = data;
+        if (this.automatonFrames) {
+          this.heads = this.automatonFrames.filter(item => item.Slot == 1);
+          this.frames = this.automatonFrames.filter(item => item.Slot == 2);
+          this.searchPupFr = this.frames[0].ItemId;
+          this.searchPupHe = this.heads[0].ItemId;
+          this.searchPupClick();
+        }
+      });
+    }
+  }
+
+  spellClick() {
+    if(!this.spells) {
+      this.ds.sendGetSpellsByJob(this.id).toPromise().then((data: any[])=>{
+        this.spells = data;
+      });
+    }
+  }
+
+  afClick() {
+    if(!this.af) {
+      this.ds.sendGetAFByJob(this.id).toPromise().then((data: any[])=>{
+        this.af = data;
+      });
+    }
+  }
+
+  rankClick() {
+    if(!this.skillRanks) {
+      this.ds.sendGetSkillRanksByJob(this.id).toPromise().then((data: any[])=>{
+        this.skillRanks = [];
+        data.forEach(item => {
+          if (item.Value !== 0) {
+          this.getMaxLevel(this.searchVal, item.Value).then((skill:any) => {
+            this.skillRanks.push({
+              ...item,
+              lVal: skill[0].Value 
+            });
+          });
+          }
+        });
+      });
+    }
+  }
+
+  //Similar to GetSpellGrpByJob in API
+  hasSpells(): number {
+    switch (this.id) {
+      case 3:
+        return 6
+      case 7:
+        return 6
+      case 15:
+        return 5
+      case 10:
+        return 1
+      case 16:
+        return 3
+      case 4:
+        return 2
+      case 8:
+        return 2
+      case 21:
+        return 2
+      case 5:
+        return 10
+      case 20:
+        return 10
+      case 13:
+        return 4
+      default:
+        return 0
+      }
   }
 }

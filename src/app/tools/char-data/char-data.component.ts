@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
 import { environment } from 'src/environments/environment';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
+import { UserService } from '../../core/user.service';
 
 @Component({
   selector: 'app-char-data',
@@ -10,13 +12,19 @@ import { environment } from 'src/environments/environment';
 export class CharDataComponent implements OnInit {
   data;
   equip = [];
+  equipName = [];
   skills = [];
   jobsArr = ["NONE", "WAR", "MNK", "WHM", "BLM", "RDM", "THF", "PLD", "DRK", "BST", "BRD", "RNG", "SAM", "NIN", "DRG", "SMN", "BLU", "COR", "PUP", "DNC", "SCH", "GEO", "RUN"];
   facePath;
   searchVal: string;
   alertMessage;
   error = true;
-  constructor(private dataService: ApiService) { }
+  constructor(private dataService: ApiService, private us: UserService) {
+    if(this.us.playerSearch) {
+      this.searchVal = this.us.playerSearch;
+      this.searchClick()
+    } 
+   }
 
   ngOnInit(): void {
   }
@@ -30,17 +38,21 @@ export class CharDataComponent implements OnInit {
     } else {
       this.alertMessage = '';
       if (this.searchVal && this.searchVal.length < maxChar) {
-        this.dataService.sendGetChar(this.searchVal).subscribe((data: any[])=>{
+        this.us.playerSearch = this.searchVal;
+        this.dataService.sendGetChar(this.searchVal).toPromise().then((data: any[])=>{
           // console.log(data);
           if (data) {
             this.data = data[0];
             this.equip = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            this.equipName = ['Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty','Empty'];
+
             this.facePath = this.getImgPath(this.data.Face, this.data.Race);
             for (var i = 0; i < 65; i++) {//65 is total number of skills. Initializing bc not all will have values
               this.skills.push(0);
             }
             for (var i = 0; i < this.data.Equipment.length; i++) {
               this.equip[this.data.Equipment[i].ESlotId] = this.data.Equipment[i].ItemId;
+              this.equipName[this.data.Equipment[i].ESlotId] = this.data.Equipment[i].Name;
             }
       
             for (var i = 0; i < this.data.Skills.length; i++) {

@@ -16,20 +16,25 @@ searchCharVal: string;
 filteredChars;
 searchMobVal: string;
 filteredMobs;
-
+mapPaths = ["_nomap.jpg"];
   constructor(private route: ActivatedRoute, private ds: ApiService) {
     if (route.params) {
       route.params.subscribe(val => {
         this.zoneId = val.id;
         this.zoneName = val.name;
-        this.ds.sendGetZoneEvent(this.zoneId).subscribe((data: any[])=>{
+        this.ds.sendGetZoneEvent(this.zoneId).toPromise().then((data: any[])=>{
           this.zoneEvents = data;
           this.filteredChars = this.zoneEvents?.acts;
         });
-        this.ds.sendGetZoneMobs(this.zoneId).subscribe((data: any[])=>{
+        this.ds.sendGetZoneMobs(this.zoneId).toPromise().then((data: any[])=>{
           this.zoneMobs = data;
           this.filteredMobs = data;
         });
+        this.ds.sendGetMapPaths(this.zoneId).toPromise().then((paths : any) => {
+          if(paths) {
+            this.mapPaths = paths;
+          }          
+        })
       });
     }
    }

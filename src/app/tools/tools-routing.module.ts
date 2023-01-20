@@ -26,6 +26,10 @@ import { BcnmDetailsComponent } from './bcnm/bcnm-details/bcnm-details.component
 import { MissionsComponent } from './missions/missions.component';
 import { QuestsComponent } from './quests/quests.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
+import { CatMissionsComponent } from './missions/cat-missions/cat-missions.component';
+import { CatMissionComponent } from './missions/cat-mission/cat-mission.component';
+import { PetDetailsComponent } from './misc-details/pet-details/pet-details.component';
+import { TutDetsComponent } from './tutorials/tut-dets/tut-dets.component';
 
 const routes: Routes = [
   { path: '', component: ToolsComponent,
@@ -43,6 +47,7 @@ const routes: Routes = [
     { path: 'jobs', component: JobsComponent },
     { path: 'jobs/:id', component: JobDetailsComponent },
     { path: 'jobs/pup/attachments', component: AttachmentsComponent },
+    { path: 'pet/:id', component: PetDetailsComponent },
     { path: 'jobs/:type/:id', component: MiscDetailsComponent },
     { path: 'items', component: ItemsComponent },
     { path: 'items/:id', component: ItemDetailsComponent },
@@ -53,6 +58,11 @@ const routes: Routes = [
     { path: 'crafts/:id', component: CraftingDetailsComponent },
     { path: 'tutorials', component: TutorialsComponent },
     { path: 'missions', component: MissionsComponent },
+    { path: 'missions/:id', component: CatMissionsComponent },
+    { path: 'missions/:id/:index', component: CatMissionComponent },
+    { path: 'tutorials/:name/:cnt', component: TutDetsComponent },
+
+
     { path: 'quests', component: QuestsComponent },
 
 

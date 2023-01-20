@@ -15,12 +15,12 @@ export class SkillchainComponent implements OnInit {
     if (route.params) {
       route.params.subscribe(val => {
         this.id = Number(val.id);
-        this.ds.sendGetSCByType(this.id).subscribe((data: any[])=>{
+        this.ds.sendGetSCByType(this.id).toPromise().then((data: any[])=>{
           if(data) {
             this.skills = data;
           }          
         });
-        this.ds.sendGetWSBySCType(this.id).subscribe((data: any[])=>{
+        this.ds.sendGetWSBySCType(this.id).toPromise().then((data: any[])=>{
           if(data) {
             this.wslist = data;
           }          

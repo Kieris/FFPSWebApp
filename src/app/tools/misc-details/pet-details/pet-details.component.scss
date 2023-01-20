@@ -1,0 +1,67 @@
+@import '../../../../assets/theme/theme.scss';
+@import '../../../../assets/theme/functions.scss';
+
+
+.list-group-item, .accordion-item, .accordion-button {
+    background-color: var(--cardBackground)!important;;
+    color: var(--cardColor)!important;  
+    border: 1px solid var(--border-color) !important; 
+}
+  .card-bg {
+    background-color: var(--cardBackground);
+    color: var(--cardColor);  
+  }
+
+  .ah-table {
+        background-color: var(--table-bg) !important;
+        color: var(--table-color)!important;
+        border-color: var(--border-color)!important;
+  }
+
+  a {
+    color: var(--table-color)!important;
+    :hover {
+        color: var(--table-hover-color)!important;
+    }
+  }
+  .small-pad {
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+    max-width: 180px;
+    min-width: 120px;
+  }
+
+  .drop-small {
+    display: none !important;
+}
+
+  @media (max-width: 968px) {
+    .drop-big {
+      display: none !important;
+    }
+    .drop-small {
+        display: block !important;
+    }
+    .small-pad {
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .drop-big {
+      display: none !important;
+    }
+    .drop-small {
+        display: block !important;
+    }
+
+    .small-pad {
+      margin-left: 0px !important;
+      margin-right: 5px !important;
+    }
+
+    .smt {
+      padding-top: 5px !important;
+    }
+  }

@@ -1,1 +1,9 @@
-<p>missions works!</p>
+<div class="container">
+    <h3 class="mt-3">Mission Categories</h3>
+    <div class="list-group">
+        <a *ngFor="let mish of missions" [routerLink]="['/tools/missions', mish.Value]" class="list-group-item p-3">
+            {{mish.Name}}
+        </a>
+    </div>
+</div>
+

@@ -1,0 +1,9 @@
+<div >
+    <h3 class="mt-3">{{name | removeUnderscore}}</h3>
+    <div class="d-flex flex-column align-items-center">
+<div *ngFor="let item of items" class="my-2 flex-grow-1" >
+    <img class="rounded" style="min-width: 50vw; max-width: 100%;" [src]='prePath + "tutorials/" + item + ".png"' onerror="this.src='../../../../assets/imgs/equip_box.gif';"/>
+</div>
+</div>
+</div>
+

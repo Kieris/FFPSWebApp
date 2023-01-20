@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="my-3">{{id | removeUnderscore}} Missions</h3>
+
+    <div *ngIf="id != 'assault'" class="list-group">
+        <a *ngFor="let mish of missions?.Values; let i = index" [routerLink]="['/tools/missions', id, mish.Index]" class="list-group-item p-3">
+            {{i + 1}}. {{mish.Name}}
+        </a>
+    </div>
+    <div *ngIf="id == 'assault'" class="list-group">
+        <div *ngFor="let mish of missions; let i = index" class="list-group-item p-3">
+            <div class="fs-6 fw-bold">{{mish.Name}}</div>
+            <div>Area: {{mish.Area}}</div>
+            <div>Level: {{mish.Level}}</div>
+            <div>Rank: {{mish.Rank}}</div>
+            <div class="small text-muted">Orders: {{mish.Orders}}</div>
+            <div class="small text-muted">Objective: {{mish.Objective}}</div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="card item-box my-3" style="max-width: 430px;">
+<div class="item-box my-3" style="max-width: 430px;">
 <div class="d-flex justify-content-left flex-grow-1" style="max-width: 410px;">
     <div class="d-flex align-items-top justify-content-center pb-3 pe-2" style="width: 54px; padding-top: 8px; padding-left: 6px;">
         <app-item-icon [Val]="item?.ItemID" Eq="1"></app-item-icon>
@@ -13,17 +13,17 @@
                 <!--Removing Jug Pet items from Cannot Equip-->
                 <div *ngIf="item?.Armor?.RSlot != 0 && item.ItemID < 17860 && item.ItemID > 17906">Cannot equip {{item?.Armor?.RSlot | rslot}} gear</div>
             </div>  
-            <div>
+            <div style="min-height: 30px;">
                 <!--Removing Jug Pet items from DMG and Delay-->
                 <div *ngIf="item?.Weap && item.ItemID < 17860 && item.ItemID > 17906" class="wrap-divs me-2"><span class="me-2">DMG: {{item.Weap.Dmg}}</span><span>Delay: {{item.Weap.Delay}}</span></div>
                 <div *ngFor="let mod of item?.Modifs" class="wrap-divs" >
                     <div class="me-2" *ngIf="mod.Weaponskill">"{{mod.Weaponskill | removeUnderscore}}"</div>
                     <div *ngIf="!mod.Weaponskill && mod.Str" class="me-2" readonly="true" [innerHtml]="mod.Str | safeHtml"></div>                
-                </div>
-            </div>
+                </div>            
             <div *ngIf="item.Notes" >
                 <div class="me-2">{{item.Notes}}</div>               
             </div>
+        </div>
             <div *ngIf="item?.Armor" class="d-flex flex-column justify-content-end flex-grow-1">
                 Lv. {{item?.Armor.Level}} {{item?.Armor.Jobs}}
             </div>

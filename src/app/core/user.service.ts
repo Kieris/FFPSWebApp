@@ -9,6 +9,7 @@ export class UserService {
   itemSearch: string;
   ahSearch: string;
   zoneSearch: string;
+  playerSearch: string = "Jendaro";
 
 
   constructor() { }

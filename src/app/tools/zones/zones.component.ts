@@ -15,7 +15,7 @@ export class ZonesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.ds.sendGetZones().subscribe((data: any[])=>{
+    this.ds.sendGetZones().toPromise().then((data: any[])=>{
       this.zones = data;
       if (this.us.zoneSearch) {
         this.searchVal = this.us.zoneSearch;

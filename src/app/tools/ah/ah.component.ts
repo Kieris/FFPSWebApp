@@ -32,7 +32,7 @@ searchClick() {
   } else {
     this.alertMessage = '';
     if (this.searchVal && this.searchVal.length < maxChar) {
-          this.ds.sendGetAHItem(this.searchVal).subscribe((data: any[])=>{
+          this.ds.sendGetAHItem(this.searchVal).toPromise().then((data: any[])=>{
             if(data) {
               this.products = data;
             } else {

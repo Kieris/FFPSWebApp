@@ -1,5 +1,8 @@
 <div class="container">
 <h3 class="mt-3">{{zoneName | removeUnderscore}}</h3>
+<div class="d-flex justify-content-center">
+<app-map-viewer [name]="zoneName" [images]="mapPaths"></app-map-viewer>
+</div>
 <div class="accordion mt-3">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">

@@ -1,1 +1,18 @@
-<p>tutorials works!</p>
+<div class="container">
+    <h3 class="mt-3 mb-3">Tutorials</h3>
+    <div class="input-group mb-2">
+        <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (ngModelChange)="onSearchTextChange()" aria-label="Search input">        
+      </div>
+      <div *ngIf="searchVal && filteredTuts?.length == 0" class="alert d-flex align-items-center alert-info" role="alert">
+        <i class="bi bi-exclamation-diamond me-2"></i>
+        <div>
+          No results found
+        </div>
+      </div>
+    <div class="list-group">
+        <a *ngFor="let item of filteredTuts" [routerLink]="['/tools/tutorials', item.Name, item.Value]"
+        class="list-group-item" style="cursor: pointer;">
+            <h6>{{item.Name | removeUnderscore}}</h6>
+        </a>
+    </div>
+</div>

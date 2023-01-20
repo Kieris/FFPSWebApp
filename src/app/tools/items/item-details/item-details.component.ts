@@ -29,7 +29,7 @@ export class ItemDetailsComponent implements OnInit {
         this.fishDets = null;
         this.fishAreas = null;
         this.recipes = null;
-        this.ds.sendGetItemById(val.id).subscribe((data: any[])=>{
+        this.ds.sendGetItemById(val.id).toPromise().then((data: any[])=>{
           if (data) {
             this.item = data[0];
             var str = "";
@@ -78,7 +78,7 @@ export class ItemDetailsComponent implements OnInit {
             this.flags = str.substring(0, str.length - 2);
           }          
         });
-        this.ds.sendGetItemDetails(val.id).subscribe((data: any[])=>{
+        this.ds.sendGetItemDetails(val.id).toPromise().then((data: any[])=>{
           if (data) {
             this.dets = data;
           }          
@@ -93,12 +93,12 @@ export class ItemDetailsComponent implements OnInit {
             });
           }          
         });
-        this.ds.sendGetItemRecipes(val.id).subscribe((rec: any[])=>{
+        this.ds.sendGetItemRecipes(val.id).toPromise().then((rec: any[])=>{
           if (rec) {
             this.recipes = rec;
           }          
         });
-        this.ds.sendGetItemMerchants(val.id).subscribe((merch: any[])=>{
+        this.ds.sendGetItemMerchants(val.id).toPromise().then((merch: any[])=>{
           if (merch) {
             this.merchants = merch;
           }          

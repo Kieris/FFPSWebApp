@@ -3,7 +3,7 @@
 <div class="input-group mb-2 mt-3">
     <input type="text" class="form-control" placeholder="" [(ngModel)]="searchVal" (keyup.enter)="searchClick()" aria-label="Search input">
     <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="searchClick()">Search</button>
+        <button class="btn bg-ff" type="button" (click)="searchClick()">Search</button>
     </div>
   </div>
   <div *ngIf="alertMessage" class="alert d-flex align-items-center" [class.alert-danger]="error" [class.alert-info]="!error" role="alert">
@@ -12,13 +12,9 @@
       {{alertMessage}}
     </div>
   </div>
-  <div>
-      <div class="row justify-content-center">
-        <a *ngFor="let item of items" class="col-xxl-4 col-xl-5 col-sm-7" [routerLink]="[item.ItemID]" style="text-decoration: none;">
-        
+      <div class="d-flex flex-wrap">
+        <div type="button" *ngFor="let item of items" [routerLink]="[item.ItemID]" style="text-decoration: none;">
                <app-item-box [item]="item"></app-item-box>
-              
-        </a>
+        </div>
       </div>  
-</div>
 </div>

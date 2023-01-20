@@ -15,8 +15,8 @@ export class WsComponent implements OnInit {
     private elemPipe: ElementPipe) {
     if (route.params) {
       route.params.subscribe(val => {
-        this.id = Number(val.id);// have to convert for pipe to work...
-        this.ds.sendGetWSByType(this.id).subscribe((data: any[])=>{
+        this.id = Number(val.id);// have to convert for pipe to work
+        this.ds.sendGetWSByType(this.id).toPromise().then((data: any[])=>{
           if(data) {
             this.skills = data;
           }          

@@ -10,7 +10,7 @@
 
 .item-box {
     min-height: 82px;
-    min-width: 295px;
+    min-width: 425px;
     font-size: 0.9rem !important;
     font-style: none;
     z-index: 1;
@@ -28,3 +28,10 @@
 .wrap-divs {
     word-wrap: break-all; overflow-wrap: break-all; display: inline-flex;
 }
+
+
+@media (max-width: 500px) {
+    .item-box {
+        min-width: calc(100vw - 60px);
+    }
+  }

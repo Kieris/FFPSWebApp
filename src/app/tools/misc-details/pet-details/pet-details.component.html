@@ -1,0 +1,285 @@
+<div *ngIf="item?.Mob.Family" class="container">
+    <div><h3 class="mt-3">{{item.Mob.Name | removeUnderscore}}</h3> <div class="small text-muted">(Stats at Level 75)</div> </div>
+    <div class="d-flex flex-wrap justify-content-between">
+    <div class="flex-grow-1 mt-2">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Main Job</div>
+            </div>
+            <span>{{jobsArr[item.Mob.MJob]}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Sub Job</div>
+            </div>
+            <span>{{jobsArr[item.Mob.SJob]}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Combat Delay</div>
+            </div>
+            <span>{{item.Mob.CmbDelay}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Combat Skill</div>
+            </div>
+            <span>{{item.Mob.CmbSkill | skillType}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Combat DMG</div>
+            </div>
+            <span>{{item.Mob.CmbDmgMult}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Aggressive</div>
+            </div>
+            <span *ngIf="item.Mob.Aggro == 1">Yes</span>
+            <span *ngIf="item.Mob.Aggro == 0">No</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Detects</div>
+            </div>
+            <span>{{item.Mob.Detects | detecttype}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Family</div>
+            </div>
+            <span>{{item.Mob.Family}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Type</div>
+            </div>
+            <span>{{item.Mob.Genre}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Size</div>
+            </div>
+            <span>{{item.Mob.MobSize}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Speed</div>
+            </div>
+            <span>{{item.Mob.Speed}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Charmable</div>
+            </div>
+            <span *ngIf="item.Mob.Charmable != 0">Yes</span>
+            <span *ngIf="item.Mob.Charmable == 0">No</span>
+          </li>
+      </ul>
+      <div *ngIf="item?.Modifs" class="my-3">
+        <h5>Modifiers</h5>
+        <div class="list-group">
+          <div *ngFor="let mod of item?.Modifs">
+            <div *ngIf="mod.Str" class="list-group-item"><em>{{mod.Str}}</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="d-flex flex-grow-1 m-0 p-0 mt-2 mb-3">
+    <div class="small-pad">
+    <table class="table table-sm table-bordered border-muted shadow card-bg p-0 m-0" >
+        <thead>
+            <tr class="bg-light text-dark">
+              <th colspan="2" class="text-center">Attributes</th>
+            </tr>
+          </thead>
+        <tbody>
+        <tr>
+          <th>STR</th>
+          <td class="text-center">{{item.Mob.STR}}</td>
+        </tr>
+        <tr>
+          <th>DEX</th>
+          <td class="text-center">{{item.Mob.DEX}}</td>
+        </tr>
+        <tr>
+          <th>VIT</th>
+          <td class="text-center">{{item.Mob.VIT}}</td>
+        </tr>
+        <tr>
+            <th>AGI</th>
+            <td class="text-center">{{item.Mob.AGI}}</td>
+          </tr>
+          <tr>
+            <th>INT</th>
+            <td class="text-center">{{item.Mob.INT}}</td>
+          </tr>
+          <tr>
+            <th>MND</th>
+            <td class="text-center">{{item.Mob.MND}}</td>
+          </tr>
+          <tr>
+            <th>CHR</th>
+            <td class="text-center">{{item.Mob.CHR}}</td>
+          </tr>
+          <tr>
+            <th>ATT</th>
+            <td class="text-center">{{item.Mob.ATT}}</td>
+          </tr>
+          <tr>
+            <th>DEF</th>
+            <td class="text-center">{{item.Mob.DEF}}</td>
+          </tr>
+          <tr>
+            <th>ACC</th>
+            <td class="text-center">{{item.Mob.ACC}}</td>
+          </tr>
+          <tr>
+            <th>EVA</th>
+            <td class="text-center">{{item.Mob.EVA}}</td>
+          </tr>
+          <tr>
+            <th>MEVA</th>
+            <td class="text-center">{{item.Mob.MEVA}}</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="flex-grow-1" style="min-width: 180px;">
+        <table class="table table-sm table-bordered border-muted shadow card-bg p-0 m-0" >
+            <thead>
+                <tr class="bg-light text-dark">
+                  <th colspan="2" class="text-center">Resistance</th>
+                </tr>
+              </thead>
+            <tbody>
+            <tr>
+              <th>Slashing</th>
+              <td class="text-center">{{item.Mob.Slash}}</td>
+            </tr>
+            <tr>
+              <th>Piercing</th>
+              <td class="text-center">{{item.Mob.Pierce}}</td>
+            </tr>
+            <tr>
+              <th>Hand-to-Hand</th>
+              <td class="text-center">{{item.Mob.H2H}}</td>
+            </tr>
+            <tr>
+                <th>Impact</th>
+                <td class="text-center">{{item.Mob.Impact}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Fire</span><img class="mt-1" src="../../../assets/imgs/fire.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Fire}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Ice</span><img class="mt-1" src="../../../assets/imgs/ice.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Ice}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Wind</span><img class="mt-1" src="../../../assets/imgs/wind.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Wind}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Earth</span><img class="mt-1" src="../../../assets/imgs/earth.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Earth}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Lightning</span><img class="mt-1" src="../../../assets/imgs/lightning.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Lightning}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Water</span><img class="mt-1" src="../../../assets/imgs/water.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Water}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Light</span><img class="mt-1" src="../../../assets/imgs/light.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Light}}</td>
+              </tr>
+              <tr>
+                <th><div class="d-flex justify-content-between"><span>Dark</span><img class="mt-1" src="../../../assets/imgs/dark.png" width="16" height="16"></div></th>
+                <td class="text-center">{{item.Mob.Dark}}</td>
+              </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion mt-3" id="skillsAccordion">    
+        <div *ngIf="item.Skills" class="accordion-item rounded">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-skillsCollapse" aria-expanded="true" aria-controls="flush-skillsCollapse">
+              <h5><em>Skills</em></h5>
+            </button>
+          </h2>
+          <div id="flush-skillsCollapse" class="accordion-collapse" aria-labelledby="flush-headingOne" data-bs-parent="#skillsAccordion">
+            <div class="accordion-body">
+                <div *ngFor="let skill of item.Skills">
+                    <div class="my-2 p-2 border border-secondary rounded">
+                        <div class="d-flex justify-content-between">
+                            <a [routerLink]="['/tools/jobs/mobskills', skill.Name]"  class="fw-bold">{{skill.Name | spell }}</a>
+                            <div *ngIf="skill.AddType == 2" class="badge bg-ff rounded-pill mt-1" style="height: 20px;"><span>Astral Flow</span></div>
+                        </div>
+                        <div class="ms-2">Level: {{skill.Level}}</div>
+                        <div *ngIf="skill.Note" class="ms-2">{{skill.Note}}</div>
+                        <div class="mx-3 row text-muted">
+                            <div class="col align-self-center">                            
+                           <div>AOE: <span *ngIf="skill.AOE != 0">Yes</span>
+                            <span *ngIf="skill.AOE == 0">No</span></div>
+                            <div>Distance: {{skill.Distance}}</div>
+                            <div>Prep Time: {{skill.PrepTime/1000}}s</div>
+                           
+                            </div>
+                            <div class="col align-self-center">
+                            <div>Valid Targets: {{skill.ValidTargets | target}}</div>
+                            <div>Primary SC: {{skill.PrimSC | sc }}</div>
+                            <div *ngIf="skill.TertSC != 0">Secondary SC: {{skill.SecSC | sc}}</div>
+                            <div *ngIf="skill.TertSC != 0">Tertiary SC: {{skill.TertSC | sc}}</div>
+                            <div>Knockback: <span *ngIf="skill.Knockback != 0">Yes</span>
+                              <span *ngIf="skill.Knockback == 0">No</span></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.Mob.Spells" class="accordion-item mt-2 rounded">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-spellsCollapse" aria-expanded="false" aria-controls="flush-spellsCollapse">
+                <h5><em>Spells</em></h5>
+            </button>
+          </h2>
+          <div id="flush-spellsCollapse" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#skillsAccordion">
+            <div class="accordion-body">
+                <div *ngFor="let spell of item.Mob.Spells">
+                    <div class="my-2 p-2 border border-secondary rounded">
+                        <a [routerLink]="['/tools/jobs/spells', spell.Name]"  class="fw-bold">{{spell.Name | spell}}</a>
+                        <div class="mx-3 row">
+                            <div class="col align-self-center">    
+                           <div>AOE: <span *ngIf="spell.AOE != 0">Yes</span>
+                            <span *ngIf="spell.AOE == 0">No</span></div>
+                            <div>Range: {{spell.Range/10}}</div>
+                            <div>Cast Time: {{spell.CastTime/1000}} s</div>
+                            <div>Recast Time: {{spell.RecastTime/1000}} s</div>
+                            </div>
+                            <div class="col align-self-center">
+    
+                            <div>Skill: {{spell.Skill | skillType}}</div>
+                            <div>Base: {{spell.Base}}</div>
+                            <div>Multiplier: {{spell.Multiplier}}</div>
+                            <div>CE: {{spell.CE}}</div>
+                            <div>VE: {{spell.VE}}</div>
+                        </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      
+      </div>
+    </div>
