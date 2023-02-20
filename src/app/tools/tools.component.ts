@@ -16,8 +16,8 @@ export class ToolsComponent implements OnInit {
 
    light() {
       this.themeWrapper.style.setProperty('--cardColor', "black");
-      this.themeWrapper.style.setProperty('--body-bg', "whitesmoke");
-      this.themeWrapper.style.setProperty('--cardBackground', "#f8f9fa");    
+      this.themeWrapper.style.setProperty('--body-bg', "faf9f7");
+      this.themeWrapper.style.setProperty('--cardBackground', "#f8f9fa");
       this.themeWrapper.style.setProperty("--table-bg", "#f8f9fa");
       this.themeWrapper.style.setProperty("--table-striped-bg", "#ecedee");
       this.themeWrapper.style.setProperty("--table-striped-color", "#000");
@@ -30,9 +30,9 @@ export class ToolsComponent implements OnInit {
    }
 
    dark() {
-    this.themeWrapper.style.setProperty('--body-bg', "black");
+     this.themeWrapper.style.setProperty('--body-bg', "#121212");
     this.themeWrapper.style.setProperty('--cardColor', "white");
-    this.themeWrapper.style.setProperty('--cardBackground', "#272323");     
+    this.themeWrapper.style.setProperty('--cardBackground', "#272323");
     this.themeWrapper.style.setProperty("--table-bg", "#212529");
     this.themeWrapper.style.setProperty("--table-striped-bg", "#2c3034");
     this.themeWrapper.style.setProperty("--table-striped-color", "#fff");
@@ -92,8 +92,8 @@ export class SpellPipe implements PipeTransform {
       if (frags[i].length > 2) {
         if (frags[i] == 'iii'){
           frags[i] = frags[i].toUpperCase();
-        } else if (frags[i].indexOf('-') !== -1) {          
-          frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1, frags[i].indexOf('-')) + ' - ' + 
+        } else if (frags[i].indexOf('-') !== -1) {
+          frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1, frags[i].indexOf('-')) + ' - ' +
           frags[i].charAt(frags[i].indexOf('-') + 1).toUpperCase() + frags[i].slice(frags[i].indexOf('-') + 2);
         } else {
           frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1);
@@ -101,7 +101,7 @@ export class SpellPipe implements PipeTransform {
       } else {
         if(frags[i].charAt(0) === 'i' || frags[i].charAt(0) === 'x' || frags[i].charAt(0) === 'v' || frags[i].includes(".")) {
           frags[i] = frags[i].toUpperCase();
-        } 
+        }
       }
     }
     return frags.join(' ');
@@ -249,7 +249,7 @@ export class SpawnPipe implements PipeTransform {
       case 0: return "Normal";
       case 1: return "Night (20:00-04:00)";
       case 2: return "Evening (18:00-06:00)";
-      case 4: return "Weather";      
+      case 4: return "Weather";
       case 8: return "Fog (02:00-07:00)";
       case 16: return "Moon Phase";
       case 32: return "Lottery";
@@ -391,7 +391,7 @@ export class ZoneTypePipe implements PipeTransform {
       case 0: return "None";
       case 1: return "City";
       case 2: return "Outdoors";
-      case 3: return "Dungeon";      
+      case 3: return "Dungeon";
       case 4: return "Battlefield";
       case 5: return "Dynamis";
       case 6: return "Instance Dungeon";
@@ -410,7 +410,7 @@ export class DropTypePipe implements PipeTransform {
       case 0: return "Normal";
       case 1: return "Grouped";
       case 2: return "Steal";
-      case 4: return "Despoil";      
+      case 4: return "Despoil";
       default: return value;
     }
   }
@@ -467,13 +467,13 @@ export class ElementPipe implements PipeTransform {
       case 0: return "None";
       case 1: return "water";
       case 2: return "fire";
-      case 4: return "earth";   
-      case 8: return "dark";      
-      case 16: return "wind";      
-      case 32: return "ice";      
-      case 64: return "lightning";      
+      case 4: return "earth";
+      case 8: return "dark";
+      case 16: return "wind";
+      case 32: return "ice";
+      case 64: return "lightning";
       case 128: return "light";
-      case 255: return "dark";      
+      case 255: return "dark";
       default: return value;
     }
   }
@@ -486,12 +486,12 @@ export class SpellElementPipe implements PipeTransform {
       case 0: return "Physical";
       case 1: return "fire";
       case 2: return "ice";
-      case 3: return "wind";   
-      case 4: return "earth";      
-      case 5: return "lightning";      
-      case 6: return "water";      
-      case 7: return "light";  
-      case 8: return "dark";      
+      case 3: return "wind";
+      case 4: return "earth";
+      case 5: return "lightning";
+      case 6: return "water";
+      case 7: return "light";
+      case 8: return "dark";
 
       default: return value;
     }
@@ -505,10 +505,10 @@ export class CraftPipe implements PipeTransform {
       case "Wood": return "Woodworking";
       case "Cloth": return "Clothcraft";
       case "Leather": return "Leathercraft";
-      case "Bone": return "Bonecraft";   
-      case "Alchemy": return "Alchemy";      
-      case "Cook": return "Cooking";      
-      case "Smith": return "Smithing";      
+      case "Bone": return "Bonecraft";
+      case "Alchemy": return "Alchemy";
+      case "Cook": return "Cooking";
+      case "Smith": return "Smithing";
       case "Gold": return "Goldsmithing";
       default: return value;
     }
@@ -528,7 +528,7 @@ export class TimePipe implements PipeTransform {
       } else {
         return value + "m ";
       }
-       
+
     } else {
       return value + "s";
     }
@@ -542,11 +542,11 @@ export class SCPipe implements PipeTransform {
       case 0: return "None";
       case 1: return "Transfixion";
       case 2: return "Compression";
-      case 3: return "Liquefaction";   
-      case 4: return "Scission";      
-      case 5: return "Reverberation";      
-      case 6: return "Detonation";      
-      case 7: return "Induration";      
+      case 3: return "Liquefaction";
+      case 4: return "Scission";
+      case 5: return "Reverberation";
+      case 6: return "Detonation";
+      case 7: return "Induration";
       case 8: return "Impaction";
       case 9: return "Gravitation";
       case 10: return "Distortion";
@@ -555,7 +555,7 @@ export class SCPipe implements PipeTransform {
       case 13: return "Light";
       case 14: return "Darkness";
       case 15: return "Light II";
-      case 16: return "Darkness II";      
+      case 16: return "Darkness II";
       default: return value;
     }
   }
@@ -624,7 +624,7 @@ export class AHCatPipe implements PipeTransform {
       case 17:
         str = "Armor -> Head"; break;
       case 18:
-        str = "Armor -> Body"; break;					
+        str = "Armor -> Body"; break;
       case 19:
         str = "Armor -> Hands"; break;
       case 20:
@@ -650,7 +650,7 @@ export class AHCatPipe implements PipeTransform {
       case 31:
         str = "Scrolls -> Ninjitsu"; break;
       case 32:
-        str = "Scrolls -> Songs"; break;	
+        str = "Scrolls -> Songs"; break;
       case 33:
         str = "Medicine"; break;
       case 34:
@@ -702,11 +702,11 @@ export class AHCatPipe implements PipeTransform {
       case 58:
         str = "Food -> Ingredients"; break;
       case 60:
-        str = "Scrolls -> Dice"; break;		
+        str = "Scrolls -> Dice"; break;
       case 61:
         str = "Others -> Automation"; break;
       case 63:
-        str = "Materials -> Alchemy 2"; break;	
+        str = "Materials -> Alchemy 2"; break;
       case 66:
         str = "Others -> Misc. 3"; break; // also listed as Geo, Maybe Others -> Beast-made
       default: str = "None"; break;

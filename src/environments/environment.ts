@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: "http://127.0.0.1:8080/api/v1/",
+  API: "http://127.0.0.1:80/api/v1/",
   ImgFilePath: "http://192.168.1.216/web_images/"
 };
 

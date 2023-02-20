@@ -17,7 +17,7 @@ a {
   }
 }
 .theme-wrapper {
-    --body-bg: black;
+    --body-bg: #121212;
     --cardColor: white;
     --cardBackground: #272323;
     --buttonColor: #FFF;
@@ -38,7 +38,7 @@ a {
     --table-color: #000;
     --border-color: #dfe0e1;
   }
-  
+
   $variables: (
     --body-bg: var(--body-bg),
     --cardColor: var(--cardColor),
