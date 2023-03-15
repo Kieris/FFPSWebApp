@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const environment = {\n  production: true,\n  API: \"http://localhost:8080/api/v1/\",\n  ImgFilePath: \"http://192.168.1.215/web_images/\" //API: \"http://192.168.1.69:8080/api/v1/\"\n\n};","map":null,"metadata":{},"sourceType":"module"}

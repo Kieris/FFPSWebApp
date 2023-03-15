@@ -21,7 +21,7 @@
       <div class="d-flex justify-content-between">
         <div>
       <div class="fs-6 fw-bold"><a [routerLink]="['/tools/items', product.ItemID]">{{product.ItemName | removeUnderscore}}</a>
-      </div>      
+      </div>
       <div class="small">Category: <span><em>{{product.Ah | ahcat}}</em></span></div>
       <div class="small">Seller: <span>{{product.SellerName}}</span></div>
       <div class="small">Price: <span>{{product.Price}}g</span></div>
@@ -35,30 +35,5 @@
     </div>
     </div>
   </div>
-<!--<table class="table table-bordered ah-table w-100">
-    <thead>
-      <tr>
-        <th scope="col">Item</th>
-        <th scope="col">Category</th>
-        <th scope="col">Seller</th>
-        <th scope="col">Price</th>
-        <th scope="col">Stack</th>
-      </tr>
-    </thead>
-    <tbody>            
-      <tr *ngFor="let product of products">
-        <td><a [routerLink]="['/tools/items', product.ItemID]">{{product.ItemName | removeUnderscore}}</a></td>
-        <td>{{product.Ah | ahcat}}</td>
-        <td>{{product.SellerName}}</td>
-        <td>{{product.Price}}g</td>
-        <td><span *ngIf="product.Stack != 0">Yes</span><span *ngIf="product.Stack == 0">No</span></td>
-       <td>{{product.SellDate * 1000 | date}}</td>
-      </tr>
-      <tr *ngIf="!products || products.length === 0">
-          <td colspan="5"><em>No entries found.</em></td>
-      </tr>
-    </tbody>
-  </table>-->
-
 </div>
 </div>
