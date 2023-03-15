@@ -1,6 +1,6 @@
 # FFPSWebApp
 
-This is an Angular frontend for a website that interacts with the MariaDB database used for private FFXI servers to show stats similar to that of a Wiki, but the data is automatic and are guaranteed to be accurate. The original database used was based on the Wings version, but I have confirmed the API queries work with the Wings database from Feb 2023. The calculations might (not many of these were needed but future features could change that) have changed for certain things in the newer Wings code. I intend to eventually set up a demo site to show this. 
+This is an Angular frontend for a website that interacts with the MariaDB database used for private FFXI servers to show stats similar to that of a Wiki, but the data is automatic and guaranteed to be accurate. The original database used was based on the Wings version. I have confirmed the API queries work with the Wings database from Feb 2023. The calculations might (not many of these were needed but future features could change that) have changed for certain things in the newer Wings code. I intend to eventually set up a demo site to show this. 
 
 To change the API path or the path to images, change the appropriate files in the environments folder. The path to item icons in item-icon.component.html can also be changed to use to ffxiah icons if desired.
 
